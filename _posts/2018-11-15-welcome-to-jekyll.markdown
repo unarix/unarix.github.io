@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "Instalando Core y VScode en linux"
+date:   2018-11-15 01:15:11 -0150
+categories: tuto core
+---
+
+### Como correr las preview de core:
+
+Basico: instalar el code y el dotnet (core)
+
+    apt-get install dotnet-dev-1.0.0-rc4-004771
+
+    Descargar el vsCode desde: https://code.visualstudio.com/
+
+
+Creando un proyecto web (https://docs.microsoft.com/en-us/aspnet/core/client-side/yeoman):
+
+1- instalar npm y nodejs
+
+>En mint/ubuntu hay que instalar tambien `sudo nodejs-legacy` (crea una especie de link simbolico de una carpeta a otra que hace falta.. magic!)
+
+2- instalar yeoman
+
+`npm install -g yo bower`
+>Si hace falta, correr con sudo!
+
+3- Con yeoman instalar el generador de una emty web app de ASP.NET (https://docs.microsoft.com/en-us/aspnet/core/client-side/yeoman)
+
+`npm install -g generator-aspnet`
+
+4- Genial; ahora hay que correr el generador de la empty app en la carpeta donde queremos crear el proyecto
+
+5- Hacer lo que dice al final, es importante (restore, build y run)
+
+6- Comprobar que el proyecto corre en el puerto indicado
+
+>Haciendo magia desde el Code! (http://jakeydocs.readthedocs.io/en/latest/tutorials/your-first-mac-aspnet.html)
+
+-7 Fin! ya puedes programar un proyecto en net sobre linux usando code.

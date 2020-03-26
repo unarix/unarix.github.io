@@ -4,7 +4,10 @@ title:  "Instalando Jekill para GitHub"
 date:   2020-03-23 15:03:59 -0300
 categories: tuto Jekill
 ---
-Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux Mint` en mi caso esty usando 19.3:
+
+### 10 pasos para instalar jeKill y no morir en el intento
+
+Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubuntu` en mi caso esty usando Mint 19.3:
 
   1- Abrir una terminal!
 
