@@ -234,9 +234,9 @@ void imprimir(caja cajas[], int cant)
 {% endhighlight %}
 
 
-## 2. Ejercicios
+## Ejercicios
 
-# 2.1 Primer Ejercicio 
+# 1. Impedir las cajas grandes
 
 Alexander recuerda que las cajas que puede almacenar no pueden superar los 120 cm de alto, por lo tanto en la entrada de datos debemos descartar estas y darle aviso al operador cuando alguna de ellas supera el tamaño permitido.
 
@@ -257,7 +257,7 @@ else
 
 {% endhighlight %}
 
-### Segundo Ejercicio
+# 2. Marcar las cajas frágiles
 
 Alexander nos pide que cada caja que se ingrese con un peso inferior a 570 gramos sea marcada como caja frágil automáticamente. De esta forma puede detectar cuales hay que tratarlas con cuidado y enviarlas a las estanterías mas próximas para que no se dañen en el traslado.
 
@@ -278,7 +278,7 @@ if (cajas[i].peso < 570)
 
 {% endhighlight %}
 
-### Tercer Ejercicio
+# 3. Ordenar las cajas por tamaño
 
 Nuestro magnate de las estanterías descubre que tiene un gran problema: su depósito es un caos. Por lo tanto nos solicita que el listado que se imprime en pantalla, este ordenado de mayor a menor para que las cajas mas pequeñas estén almacenadas en las estanterías mas cercanas y las mas voluminosas vallan al fondo, donde las estructuras se encuentran reforzadas.
 
