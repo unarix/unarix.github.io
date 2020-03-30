@@ -250,7 +250,7 @@ void imprimir(caja cajas[], int cant)
 
 Alexander recuerda que las cajas que puede almacenar no pueden superar los 120 cm de alto, por lo tanto en la entrada de datos debemos descartar estas y darle aviso al operador cuando alguna de ellas supera el tamaño permitido.
 
-***¿Podes desarrollar un programa que permita el ingreso de 3 cajas descartando las que tengan como atributo “alto” mayor a 120 cm para luego imprimir el listado de cajas filtrado?***
+***¿Podes desarrollar un programa que permita el ingreso de cajas descartando las que tengan como atributo “alto” mayor a 120 cm para luego imprimir el listado de cajas filtrado?***
 
 Código de ayuda:
 {% highlight c %}
