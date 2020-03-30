@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Programando Structs en C++"
+title:  "Programando Structs en ANSI C"
 date:   2020-03-26 01:09:59 -0300
 categories: facu exe
 ---
@@ -16,6 +16,20 @@ El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `S
     • Vectores
 
 
+En la programación de soluciones para algunos problemas vamos a necesitar agrupar datos de diferente tipo o de manejar datos que serian muy dificil de describir en los tipos de datos primitivos, en esta situacion debemos aprovecharnos de las caracteristicas que hacen al lenguaje C, o sea el uso de estructuras, uniones y punteros.
+
+Una estructura contiene varios datos. La forma de definir una estructura es haciendo uso de la palabra clave struct. Aqui hay ejemplo de la declaracion de una estructura:
+
+{% highlight c++ %}
+struct estructuraDemo
+{
+    int soyentero;
+    double soydoble;
+    char soychar[25];
+} variable;
+{% endhighlight %}
+
+Para poner en practica estructuras vamos a poner un ejemplo de la vida real y escribir el programa base paso a paso.
 
 ## Escribiendo el programa base
 Nuestro cliente se llama Alexander, dueño de un depósito de mercadería. Su negocio consiste en recibir cajas de los mayoristas y luego distribuirlas a los minoristas.
