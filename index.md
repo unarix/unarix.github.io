@@ -5,8 +5,6 @@
 layout: home
 title: 
 ---
-
-Para ver los repositorios ingresa a [gitHub][gitHUB]
-
+![Image](imgs/head.png)
 
 [gitHUB]: https://github.com/unarix?tab=repositories

@@ -4,6 +4,7 @@ title:  "Programando Structs en C++"
 date:   2020-03-26 01:09:59 -0300
 categories: facu exe
 ---
+
 El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `STRUCTS`. Para poder resolverlos es necesario tener claro algunos conceptos: 
 
     • Librerías
@@ -14,6 +15,8 @@ El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `S
     • Structs
     • Vectores
 
+
+
 ## Escribiendo el programa base
 Nuestro cliente se llama Alexander, dueño de un depósito de mercadería. Su negocio consiste en recibir cajas de los mayoristas y luego distribuirlas a los minoristas.
 
@@ -23,6 +26,13 @@ El primer pedido que nos hace, consiste en desarrollar un sistema que le permita
     • Ancho (en cm)
     • Alto (en cm)
     • Peso (en gramos)
+
+
+
+{:refdef: style="text-align: center;"}
+![Image](/imgs/cplus.png)
+{: refdef}
+
 
 ### Inicio
 **Debemos hacer un programa, que permita ingresar al menos 3 cajas con sus atributos y luego imprimirlos en pantalla.**
