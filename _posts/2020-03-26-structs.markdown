@@ -16,9 +16,9 @@ El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `S
     • Vectores
 
 
-En la programación de soluciones para algunos problemas vamos a necesitar agrupar datos de diferente tipo o de manejar datos que serian muy dificil de describir en los tipos de datos primitivos, en esta situacion debemos aprovecharnos de las caracteristicas que hacen al lenguaje C, o sea el uso de estructuras, uniones y punteros.
+En la programación de soluciones para algunos problemas vamos a necesitar agrupar datos de diferente tipo o de manejar datos que serian muy difícil de describir en los tipos de datos primitivos, en esta situación debemos aprovecharnos de las características que hacen al lenguaje C, o sea el uso de estructuras, uniones y punteros.
 
-Una estructura contiene varios datos. La forma de definir una estructura es haciendo uso de la palabra clave struct. Aqui hay ejemplo de la declaracion de una estructura:
+Una estructura contiene varios datos. La forma de definir una estructura es haciendo uso de la palabra clave struct. Aquí hay ejemplo de la declaración de una estructura:
 
 {% highlight c++ %}
 struct estructuraDemo
@@ -29,7 +29,7 @@ struct estructuraDemo
 } variable;
 {% endhighlight %}
 
-Para poner en practica estructuras vamos a poner un ejemplo de la vida real y escribir el programa base paso a paso.
+Para poner en practica estructuras vamos a basarnos un ejemplo de la vida real y escribir el programa base paso a paso.
 
 ## Escribiendo el programa base
 Nuestro cliente se llama Alexander, dueño de un depósito de mercadería. Su negocio consiste en recibir cajas de los mayoristas y luego distribuirlas a los minoristas.
@@ -54,37 +54,38 @@ El primer pedido que nos hace, consiste en desarrollar un sistema que le permita
 
 {% highlight c++ %}
 
+
 #include<stdio.h>
 
 // Declaramos la estructura con sus atributos y la llamamos "caja"
 struct caja
 {
     char cliente[50]; // tipo char de 50 posiciones.
-    int alto;
-    int ancho;
-    int peso;
+    short alto;
+    short ancho;
+    short peso;
 };
 
 int main(void)
 {
-    int cant = 3;
-    caja cajas[cant]; // Inicializamos un vector que se llamara "cajas" y sera del tipo "caja"
-    int i=0;
+    short cant = 3;
+    struct caja cajas[cant]; // Inicializamos un vector que se llamara "cajas" y sera del tipo "caja"
+    short i=0;
 
     printf("Bienvenido al sistema *Cajita IN/OUT* \n"); // printf: nos permite mostrar texto en la consola
 
     for (i=0;i<cant;i++)
     {
-        printf("Carga de datos para el cliente %d: \n",i+1); // Porque i+1? Porque queremos mostrar el orden del cliente que cargamos... la variable I al inicio esta en cero.
+        printf("Carga de datos para el cliente %hd: \n",i+1); // Porque i+1? Porque queremos mostrar el orden del cliente que cargamos... la variable I al inicio esta en cero.
         printf(" > Ingrese el nombre del cliente: ");
         scanf("%s", cajas[i].cliente);  // scanf: nos permite obtener texto desde la consola
                                         // &cajas[i].cliente: guardamos lo que obtenemos desde la consola en la posicion "i" del vector de cajas y dentro el atributo cliente
         printf(" > Ingrese el alto de la caja: ");
-        scanf("%d", &cajas[i].alto);
+        scanf("%hd", &cajas[i].alto);
         printf(" > Ingrese el ancho de la caja: ");
-        scanf("%d", &cajas[i].ancho);
+        scanf("%hd", &cajas[i].ancho);
         printf(" > Ingrese el peso de la caja: ");
-        scanf("%d", &cajas[i].peso);
+        scanf("%hd", &cajas[i].peso);
         printf(" \n"); // Salto de linea para separar el texto del próximo cliente
 
         i = i++; // Sumamos 1 al contador de posición del vector
@@ -107,6 +108,7 @@ int main(void)
     return(0);
 }
 
+
 {% endhighlight %}
 
 ### Aplicar Funciones
@@ -122,32 +124,32 @@ int main(void)
 struct caja
 {
     char cliente[50];
-    int alto;
-    int ancho;
-    int peso;
+    short alto;
+    short ancho;
+    short peso;
 };
 
-void imprimir(caja cajas[], int cant); /* declaro primero la función, nunca debemos olvidarnos de declarar la función! */
+void imprimir(struct caja cajas[], int cant); /* declaro primero la función, nunca debemos olvidarnos de declarar la función! */
 
 int main(void)
 {
-    int cant = 3;
-    caja cajas[cant];
-    int i=0;
+    short cant = 3;
+    struct caja cajas[cant];
+    short i=0;
 
     printf("Bienvenido al sistema *Cajita IN/OUT* \n");
 
     for (i=0;i<cant;i++)
     {
-        printf("Carga de datos para el cliente %d: \n",i+1); 
+        printf("Carga de datos para el cliente %hd: \n",i+1); 
         printf(" > Ingrese el nombre del cliente: "); 
         scanf("%s", cajas[i].cliente);  
         printf(" > Ingrese el alto de la caja: ");
-        scanf("%d", &cajas[i].alto);
+        scanf("%hd", &cajas[i].alto);
         printf(" > Ingrese el ancho de la caja: ");
-        scanf("%d", &cajas[i].ancho);
+        scanf("%hd", &cajas[i].ancho);
         printf(" > Ingrese el peso de la caja: ");
-        scanf("%d", &cajas[i].peso);
+        scanf("%hd", &cajas[i].peso);
         printf(" \n");
 
         i = i++;
@@ -158,20 +160,20 @@ int main(void)
     return(0);
 }
 
-/// Esta función me permite imprimr el vector de cajas en pantalla
+/// Esta función me permite imprimir el vector de cajas en pantalla
 /// Tiene 2 parámetros, el array de cajas y la cantidad de cajas que voy a imprimir (me sirve para recorrer el vector)
-void imprimir(caja cajas[], int cant)
+void imprimir(struct caja cajas[], int cant)
 {
-    int i=0;
+    short i=0;
 
     printf("*** Listado de cajas: ***\n\n");
 
     for (i=0;i<cant;i++)
     {
         printf(" > Cliente %s \n", cajas[i].cliente);
-        printf("   Alto Caja %d \n", cajas[i].alto);
-        printf("   Ancho Caja %d \n", cajas[i].ancho);
-        printf("   Peso Caja %d \n", cajas[i].peso);
+        printf("   Alto Caja %hd \n", cajas[i].alto);
+        printf("   Ancho Caja %hd \n", cajas[i].ancho);
+        printf("   Peso Caja %hd \n", cajas[i].peso);
         printf(" \n");
     }
 
@@ -191,18 +193,18 @@ void imprimir(caja cajas[], int cant)
 struct caja
 {
     char cliente[50];
-    int alto;
-    int ancho;
-    int peso;
+    short alto;
+    short ancho;
+    short peso;
 };
 
-void imprimir(caja cajas[], int cant);
+void imprimir(struct caja cajas[], int cant);
 
 int main(void)
 {
-    int cant = 0;
-    caja cajas[100]; // El vector, lo inicializo en 100 posiciones que sera el máximo que se pueda cargar.
-    int i = 0;
+    short cant = 0;
+    struct caja cajas[100]; // El vector, lo inicializo en 100 posiciones que sera el máximo que se pueda cargar.
+    short i = 0;
     char continuar = 's';
 
     printf("Bienvenido al sistema *Cajita IN/OUT* \n");
@@ -213,11 +215,11 @@ int main(void)
         printf(" > Ingrese el nombre del cliente: "); 
         scanf("%s", cajas[i].cliente);
         printf(" > Ingrese el alto de la caja: ");
-        scanf("%d", &cajas[i].alto);
+        scanf("%hd", &cajas[i].alto);
         printf(" > Ingrese el ancho de la caja: ");
-        scanf("%d", &cajas[i].ancho);
+        scanf("%hd", &cajas[i].ancho);
         printf(" > Ingrese el peso de la caja: ");
-        scanf("%d", &cajas[i].peso);
+        scanf("%hd", &cajas[i].peso);
         printf(" \n");
 
         i = i+1;
@@ -239,7 +241,7 @@ int main(void)
 }
 
 /// Esta función me permite imprimir el vector de cajas en pantalla
-void imprimir(caja cajas[], int cant)
+void imprimir(struct caja cajas[], int cant)
 {   
     int i=0;
 
@@ -253,7 +255,6 @@ void imprimir(caja cajas[], int cant)
         printf("   Peso Caja %d \n", cajas[i].peso);
         printf(" \n");
     }
-
 }
 {% endhighlight %}
 
@@ -308,7 +309,7 @@ Nuestro magnate de las estanterías descubre que tiene un gran problema: su dep�
 
 Incluyendo las limitaciones de los ejercicios anteriores; ***¿Podrías desarrollar un programa que permita ingresar un máximo de 10 cajas y listarlas ordenarlas por su tamaño de mayor a menor?***
 
-Codigo de ayuda:
+Código de ayuda:
 {% highlight c++ %}
 #include<stdio.h>
 #include<conio.h>
@@ -316,7 +317,7 @@ Codigo de ayuda:
 void main()
 {
     
-    // Metodo de burbuja    
+    // Método de burbuja    
     for(i=0;i<=n;i++){
         for(j=0;j<n-1;j++){
             if(a[j]>a[j+1]){
@@ -338,7 +339,15 @@ void main()
 {% endhighlight %}
 
 Material:
-[Historia de c++][historia-C] / [Structs en c++][structs-C]
+
+> [“The GNU tutorial”][GNU-C], páginas 19-22.
+
+> Aprendiendo [Structs en c++][structs-C]
+
+> [Tipos de datos en c++][tipos_datos-C]
+
+
 
 [structs-C]: http://www.investigacion.frc.utn.edu.ar/tecnicasdigitales/pub/File/Estructuras.pdf
-[historia-C]:   https://es.wikipedia.org/wiki/C%2B%2B
+[tipos_datos-C]: http://www.it.uc3m.es/pbasanta/asng/course_notes/data_types_es.html#data_types_integers
+[GNU-C]: https://www.it.uc3m.es/pbasanta/asng/course_notes/ctut.pdf

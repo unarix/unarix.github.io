@@ -7,7 +7,7 @@ categories: tuto Jekill
 
 ### 10 pasos para instalar jeKill y no morir en el intento
 
-Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubuntu` en mi caso esty usando Mint 19.3:
+Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubuntu` en mi caso estoy usando Mint 19.3:
 
   1- Abrir una terminal!
 
@@ -19,7 +19,7 @@ Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubu
 
   `gem -v`
 
-  4- Si los pasos anteriores no te dan error, puedes continuar con la instalacion de jetkill:
+  4- Si los pasos anteriores no te dan error, puedes continuar con la instalación de jetkill:
 
   `gem install jekyll bundler`
 
@@ -27,11 +27,11 @@ Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubu
 
   `jekyll -v`
 
-  6- Ahora podemos crear el nuevo site dentro de un directorio cualquiera (pero es importante que este vacio):
+  6- Ahora podemos crear el nuevo site dentro de un directorio cualquiera (pero es importante que este vació):
 
   `jekyll new 20percent`
   
-  7- Una vez que la creacion de los archivos finalice podemos correrlo con el comando:
+  7- Una vez que la creación de los archivos finalice podemos correrlo con el comando:
   
   `bundle exec jekyll serve`
   
@@ -43,10 +43,10 @@ Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubu
   
   `Dentro de la carpeta *posts* se alojan todos los markdown de posteos.`
 
-  `Dentro de la carpeta *site*, estan los archivos plantilla del sitio`
+  `Dentro de la carpeta *site*, están los archivos plantilla del sitio`
   
   10- Ahora sigue las instrucciones para publicarlo en el repo de github:
   
   `https://help.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll#creating-your-site`
 
-Eso es todo, con estos 10 pasos deberias poder tener a jekill funcionando.
+Eso es todo, con estos 10 pasos deberías poder tener a jekill funcionando.
