@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Programando Structs en ANSI C"
+title:  "Programando Structs en ANSI C - I"
 date:   2020-03-26 01:09:59 -0300
 categories: facu exe
 ---
@@ -10,7 +10,6 @@ El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `S
     • Librerías
     • Variables
     • Tipos de datos
-    • Funciones
     • Estructuras de control
     • Structs
     • Vectores
@@ -50,12 +49,16 @@ El primer pedido que nos hace, consiste en desarrollar un sistema que le permita
 
 ### Inicio
 **Debemos hacer un programa, que permita ingresar al menos 3 cajas con sus atributos y luego imprimirlos en pantalla.**
->Repaso de: **struct, vector, char, for, scanf, printf**
+- La cantidad de cajas a ingresar se define mediante una constante
+- Solo se puede usar tipos de datos específicos (long, short, chat, etc)
+- Debemos usar una estructura para contener todos los atributos de una caja
+
+
 
 {% highlight c++ %}
 
-
 #include<stdio.h>
+#define cantidad 3
 
 // Declaramos la estructura con sus atributos y la llamamos "caja"
 struct caja
@@ -68,13 +71,12 @@ struct caja
 
 int main(void)
 {
-    short cant = 3;
-    struct caja cajas[cant]; // Inicializamos un vector que se llamara "cajas" y sera del tipo "caja"
+    struct caja cajas[cantidad]; // Inicializamos un vector que se llamara "cajas" y sera del tipo "caja"
     short i=0;
 
     printf("Bienvenido al sistema *Cajita IN/OUT* \n"); // printf: nos permite mostrar texto en la consola
 
-    for (i=0;i<cant;i++)
+    for (i=0;i<cantidad;i++)
     {
         printf("Carga de datos para el cliente %hd: \n",i+1); // Porque i+1? Porque queremos mostrar el orden del cliente que cargamos... la variable I al inicio esta en cero.
         printf(" > Ingrese el nombre del cliente: ");
@@ -95,9 +97,9 @@ int main(void)
 
     printf("*** Listado de cajas: ***\n\n");
 
-    for (i=0;i<cant;i++)
+    for (i=0;i<cantidad;i++)
     {
-        printf("  Cliente %s \n", cajas[i].cliente);
+        printf(" > Cliente %s \n", cajas[i].cliente);
         printf("   Alto Caja %d \n", cajas[i].alto);
         printf("   Ancho Caja %d \n", cajas[i].ancho);
         printf("   Peso Caja %d \n", cajas[i].peso);
@@ -108,235 +110,14 @@ int main(void)
     return(0);
 }
 
-
 {% endhighlight %}
 
-### Aplicar Funciones
+### Calcular promedios y porcentajes
+**Modifiquemos el programa anterior para que nos permita lo siguiente:**
+- Que me permita ingresar 10 cajas.
+- Calcular el promedio del peso y mostrarlo en la impresion final.
+- Calcular el porcentaje de cajas que superan la longitud de 480cm.
 
-<strong> Modifiquemos el programa anterior para que el listado de cajas se realice desde un único lugar. </strong>
-
-> Acá debemos implementar **funciones**, recordá que, una función, es un bloque de código dentro del programa que se encarga de realizar una tarea determinada.
-
-
-{% highlight c++ %}
-#include<stdio.h>
-
-struct caja
-{
-    char cliente[50];
-    short alto;
-    short ancho;
-    short peso;
-};
-
-void imprimir(struct caja cajas[], int cant); /* declaro primero la función, nunca debemos olvidarnos de declarar la función! */
-
-int main(void)
-{
-    short cant = 3;
-    struct caja cajas[cant];
-    short i=0;
-
-    printf("Bienvenido al sistema *Cajita IN/OUT* \n");
-
-    for (i=0;i<cant;i++)
-    {
-        printf("Carga de datos para el cliente %hd: \n",i+1); 
-        printf(" > Ingrese el nombre del cliente: "); 
-        scanf("%s", cajas[i].cliente);  
-        printf(" > Ingrese el alto de la caja: ");
-        scanf("%hd", &cajas[i].alto);
-        printf(" > Ingrese el ancho de la caja: ");
-        scanf("%hd", &cajas[i].ancho);
-        printf(" > Ingrese el peso de la caja: ");
-        scanf("%hd", &cajas[i].peso);
-        printf(" \n");
-
-        i = i++;
-    }
-
-    imprimir(cajas,cant); // Llamo a la función y le envió los dos parámetros de su firma
-
-    return(0);
-}
-
-/// Esta función me permite imprimir el vector de cajas en pantalla
-/// Tiene 2 parámetros, el array de cajas y la cantidad de cajas que voy a imprimir (me sirve para recorrer el vector)
-void imprimir(struct caja cajas[], int cant)
-{
-    short i=0;
-
-    printf("*** Listado de cajas: ***\n\n");
-
-    for (i=0;i<cant;i++)
-    {
-        printf(" > Cliente %s \n", cajas[i].cliente);
-        printf("   Alto Caja %hd \n", cajas[i].alto);
-        printf("   Ancho Caja %hd \n", cajas[i].ancho);
-        printf("   Peso Caja %hd \n", cajas[i].peso);
-        printf(" \n");
-    }
-
-}
-{% endhighlight %}
-
-### Aplicar While
-**Una vez mas, modifiquemos el programa anterior para que el usuario pueda cargar una cantidad de cajas N, el programa finaliza cuando se especifica que no se quieren cargar mas cajas.**
-
->Para hacer esto, debemos aplicar **WHILE**, la idea es realizar la carga de cajas **mientras** el usuario responda que **si**, pero en caso de que responda que **no**, finalizamos el while.
->También vamos a tener un problema en la impresión, por tanto debemos usar **"IF"** para solo imprimir del vector las cajas que estén completas.
-
-
-{% highlight c++ %}
-#include<stdio.h>
-
-struct caja
-{
-    char cliente[50];
-    short alto;
-    short ancho;
-    short peso;
-};
-
-void imprimir(struct caja cajas[], int cant);
-
-int main(void)
-{
-    short cant = 0;
-    struct caja cajas[100]; // El vector, lo inicializo en 100 posiciones que sera el máximo que se pueda cargar.
-    short i = 0;
-    char continuar = 's';
-
-    printf("Bienvenido al sistema *Cajita IN/OUT* \n");
-
-    while(continuar == 's') // Vamos a ejecutar todo el código de este bloque mientras la variable continuar sea igual a "s"
-    {
-        printf(">> Carga de datos para el cliente %d: \n",i+1);
-        printf(" > Ingrese el nombre del cliente: "); 
-        scanf("%s", cajas[i].cliente);
-        printf(" > Ingrese el alto de la caja: ");
-        scanf("%hd", &cajas[i].alto);
-        printf(" > Ingrese el ancho de la caja: ");
-        scanf("%hd", &cajas[i].ancho);
-        printf(" > Ingrese el peso de la caja: ");
-        scanf("%hd", &cajas[i].peso);
-        printf(" \n");
-
-        i = i+1;
-
-        printf(">> Quiere continuar la carga? (s/n): ");
-        scanf("%s", &continuar);  // Guardamos la respuesta del usuario en la variable continuar.
-        printf(" \n");
-
-        cant = i; // Guardo la cantidad de cajas que fueron cargadas en una variable aparte
-    }
-
-    imprimir(cajas, cant); 
-    // Importante: 
-    // Como se ve arriba, a la función "imprimir" le envío la variable "cant" en el parámetro de cantidad asignado por "i",
-    // esta variable contiene la cantidad de posiciones que se llenaron en el array.. de lo contrario imprimira las 100 posiciones.
-    // ;)
-
-    return(0);
-}
-
-/// Esta función me permite imprimir el vector de cajas en pantalla
-void imprimir(struct caja cajas[], int cant)
-{   
-    int i=0;
-
-    printf("*** Listado de cajas: ***\n\n");
-
-    for (i=0;i<cant;i++)
-    {
-        printf(" > Cliente %s \n", cajas[i].cliente);
-        printf("   Alto Caja %d \n", cajas[i].alto);
-        printf("   Ancho Caja %d \n", cajas[i].ancho);
-        printf("   Peso Caja %d \n", cajas[i].peso);
-        printf(" \n");
-    }
-}
-{% endhighlight %}
-
-
-## Ejercicios
-
-# 1. Impedir las cajas grandes
-
-Alexander recuerda que las cajas que puede almacenar no pueden superar los 120 cm de alto, por lo tanto en la entrada de datos debemos descartar estas y darle aviso al operador cuando alguna de ellas supera el tamaño permitido.
-
-***¿Podes desarrollar un programa que permita el ingreso de cajas descartando las que tengan como atributo “alto” mayor a 120 cm para luego imprimir el listado de cajas filtrado?***
-
-Código de ayuda:
-{% highlight c %}
-
-if( altoaux < altomax)
-{
-    altoaux = cajas[i].alto;
-}
-else
-{
-    printf("Alto supera el máximo, se descarta la caja. \n");
-    // ?? que mas se debe hacer para descartar la caja del vector? 
-}
-
-{% endhighlight %}
-
-# 2. Marcar las cajas frágiles
-
-Alexander nos pide que cada caja que se ingrese con un peso inferior a 570 gramos sea marcada como caja frágil automáticamente. De esta forma puede detectar cuales hay que tratarlas con cuidado y enviarlas a las estanterías mas próximas para que no se dañen en el traslado.
-
-Nuevo atributo:
-* Frágil (si/no)
-    
-
-***¿Podes agregarle al desarrollo anterior el nuevo atributo y marcarlo en SI con cada caja de peso inferior a 570 gramos?  La impresión de las cargas frágiles ahora saldrán discriminadas en una impresión aparte.***
-
-Código de ayuda:
-{% highlight c++ %}
-
-// Si pesa menos de 570g la marco como frágil.
-if (cajas[i].peso < 570)
-{
-    cajas[i].fragil = 's';
-}
-
-{% endhighlight %}
-
-# 3. Ordenar las cajas por tamaño
-
-Nuestro magnate de las estanterías descubre que tiene un gran problema: su depósito es un caos. Por lo tanto nos solicita que el listado que se imprime en pantalla, este ordenado de mayor a menor para que las cajas mas pequeñas estén almacenadas en las estanterías mas cercanas y las mas voluminosas vallan al fondo, donde las estructuras se encuentran reforzadas.
-
-Incluyendo las limitaciones de los ejercicios anteriores; ***¿Podrías desarrollar un programa que permita ingresar un máximo de 10 cajas y listarlas ordenarlas por su tamaño de mayor a menor?***
-
-Código de ayuda:
-{% highlight c++ %}
-#include<stdio.h>
-#include<conio.h>
-
-void main()
-{
-    
-    // Método de burbuja    
-    for(i=0;i<=n;i++){
-        for(j=0;j<n-1;j++){
-            if(a[j]>a[j+1]){
-                aux=a[j];
-                a[j]=a[j+1];
-                a[j+1]=aux;
-            }
-        }
-    }
-
-    for(i=0;i<3;i++)
-    {
-        printf("%d",a);
-    }
-    
-    return 0;
-}
-
-{% endhighlight %}
 
 Material:
 
