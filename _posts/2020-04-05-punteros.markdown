@@ -1,0 +1,122 @@
+---
+layout: post
+title:  "Punteros en ANSI C"
+date:   2020-04-05 20:14:51 -0300
+categories: facu exe
+---
+
+El Objetivo de este  TP es conocer y practicar ejercicios del tema `PUNTEROS`. Para poder resolverlos es necesario tener claro algunos conceptos: 
+
+    • Librerías
+    • Variables
+    • Tipos de datos
+    • Estructuras de control
+
+Una de las características más poderosas del lenguaje C, es el puntero. Los punteros permiten simular las llamadas por referencia y crear y manipular estructuras de datos dinámicas, que pueden crecer y encogerse en tiempos de ejecución, como las pilas, árboles y listas. 
+
+Un puntero **es un objeto del lenguaje de programación, cuyo valor se refiere a (o "apunta a") otro valor almacenado en otra parte de la memoria del ordenador utilizando su dirección**. Un puntero referencia a una ubicación en memoria, y a la obtención del valor almacenado en esa ubicación se la conoce como desreferenciación del puntero. A modo de analogía, un número de página en el índice de un libro podría considerarse un puntero a la página correspondiente; desreferenciar un puntero sería como ir a la página con el número de página especificada en el índice.
+
+> Es recomendable que hayas leído el material de la catedra antes de continuar!
+
+### Aplicar Punteros
+
+Escribimos un programa que implemete punteros de forma básica. Vamos a almacenar en el puntero la dirección de memoria de la variable y recuperar el valor al que esta apuntando.
+
+> Prestar atención! el puntero es fácilmente identificable debido a que su declaración se realiza con un **"*"**:
+> Para imprimir el puntero estamos usando el operador **"%p"**
+
+
+{% highlight c %}
+#include <stdio.h>
+
+int main()
+{
+    int cont = 6; // Declaro una variable short y le asigno un numero entero
+    int *puntero_ejemplo; // declaro un puntero llamado puntero_ejemplo
+
+    puntero_ejemplo = &cont; // obtengo con el "&" la direccion de memoria de la variable "cont" y la asigno al puntero "puntero_ejemplo"
+    
+    printf(" cont es igual a %d y esta en la direccion de memoria: %p ", cont, &cont );
+    printf(" cont es igual a %d y esta en %p referencia indirecta", *puntero_ejemplo , puntero_ejemplo );
+}
+{% endhighlight %}
+
+
+### Punteros con funciones
+
+Siguiendo el ejemplo anterior, ahora escribimos un programa utilizando punteros y funciones. Lo que vamos a hacer, es enviarle por parametro la referencia de memora a un puntero y que esta función realice la suma; sin que retorne nada, veremos luego el valor de la variable en la función padre.
+
+> Prestar atención! se le enviara a la función la dirección de memoria de la variable con el operador **"&"**
+
+
+{% highlight c %}
+
+#include <stdio.h>
+
+void sumapuntero ( int *puntero_nro ); // Creamos una funcion y declaramos un parametro tipo puntero
+
+int main()
+{
+    int numero = 5; // declaramos la variable numero y la igualamos a 5
+
+    printf("El valor original de numero es %d", numero);
+    sumapuntero ( &numero ); //Llamo a la funcion y le envio la direccion de memoria (con el &) de numero.
+    printf("El nuevo valor de numero es %d", numero);
+    return 0;
+}
+
+// la funcion sumapuntero; va a sumar los valores de la variable enviada como referencia 
+void sumapuntero (int *puntero_nro) 
+{
+    *puntero_nro = *puntero_nro + *puntero_nro;
+}
+{% endhighlight %}
+
+
+## Ejercicios
+
+# 1. Calcular el cubo
+
+Un exponente es un número que indica cuantas veces el número base se utiliza como factor. Por ejemplo, 4 elevado a la 3 indica que el número base 4 se utiliza como factor 3 veces.
+
+***¿Podes desarrollar un programa que permita calcular el cubo de un valor entero mediante una función utilizando punteros?***
+
+Código de ayuda:
+{% highlight c %}
+
+ puntero = puntero * puntero * puntero;
+
+{% endhighlight %}
+
+# 2. Completar el programa
+
+Dado el siguiente programa escrito en C, de debe completar las lineas que faltan para que sea compilado y ejecutado correctamente.
+
+***¿Podes explicar que es lo que hace la función "intercambia"?***
+
+Código de ayuda:
+{% highlight c %}
+
+#include <stdio.h>
+
+void intercambia (int *ptrnro1, int *ptrnro2)
+{
+    int aux= *ptrnro1;
+    *ptrnro1= *ptrnro2;
+    *ptrnro2= aux;
+}
+
+void main ()
+{
+    // declaración de variables a utilizar
+    // llamado a función
+    // impresión de resultados
+}
+
+{% endhighlight %}
+
+> Mas data: [Punteros en C][punteros-C]  / [Tipos de datos en C][tipos_datos-C]
+
+[punteros-C]: http://www.inf-cr.uclm.es/www/cglez/downloads/docencia/punteros_c.pdf
+[tipos_datos-C]: http://www.it.uc3m.es/pbasanta/asng/course_notes/data_types_es.html#data_types_integers
+[GNU-C]: https://www.it.uc3m.es/pbasanta/asng/course_notes/ctut.pdf
