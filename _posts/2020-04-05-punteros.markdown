@@ -31,13 +31,13 @@ Escribimos un programa que implemete punteros de forma básica. Vamos a almacena
 
 int main()
 {
-    int cont = 6; // Declaro una variable short y le asigno un numero entero
-    int *puntero_ejemplo; // declaro un puntero llamado puntero_ejemplo
+    short cont = 5; // Declaro una variable short y le asigno un numero entero
+    short *puntero_ejemplo; // declaro un puntero llamado puntero_ejemplo
 
     puntero_ejemplo = &cont; // obtengo con el "&" la direccion de memoria de la variable "cont" y la asigno al puntero "puntero_ejemplo"
     
-    printf(" cont es igual a %d y esta en la direccion de memoria: %p ", cont, &cont );
-    printf(" cont es igual a %d y esta en %p referencia indirecta", *puntero_ejemplo , puntero_ejemplo );
+    printf(" cont es igual a %hd y esta en la direccion de memoria: %p ", cont, &cont );
+    printf(" cont es igual a %hd y esta en %p referencia indirecta", *puntero_ejemplo , puntero_ejemplo );
 }
 {% endhighlight %}
 
@@ -50,18 +50,17 @@ Siguiendo el ejemplo anterior, ahora escribimos un programa utilizando punteros 
 
 
 {% highlight c %}
-
 #include <stdio.h>
 
 void sumapuntero ( int *puntero_nro ); // Creamos una funcion y declaramos un parametro tipo puntero
 
 int main()
 {
-    int numero = 5; // declaramos la variable numero y la igualamos a 5
+    short numero = 5; // declaramos la variable numero y la igualamos a 5
 
-    printf("El valor original de numero es %d", numero);
+    printf("El valor original de numero es %hd", numero);
     sumapuntero ( &numero ); //Llamo a la funcion y le envio la direccion de memoria (con el &) de numero.
-    printf("El nuevo valor de numero es %d", numero);
+    printf("El nuevo valor de numero es %hd", numero);
     return 0;
 }
 
@@ -94,7 +93,6 @@ Dado el siguiente programa escrito en C, de debe completar las lineas que faltan
 
 ***¿Podes explicar que es lo que hace la función "intercambia"?***
 
-Código de ayuda:
 {% highlight c %}
 
 #include <stdio.h>
