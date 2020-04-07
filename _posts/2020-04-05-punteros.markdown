@@ -44,7 +44,7 @@ int main()
 
 ### Punteros con funciones
 
-Siguiendo el ejemplo anterior, ahora escribimos un programa utilizando punteros y funciones. Lo que vamos a hacer, es enviarle por parametro la referencia de memora a un puntero y que esta función realice la suma; sin que retorne nada, veremos luego el valor de la variable en la función padre.
+Siguiendo el ejemplo anterior, ahora escribimos un programa utilizando punteros y funciones. Lo que vamos a hacer, es enviarle por parametro la referencia de memoria a un puntero y que esta función realice la suma; sin que retorne nada, veremos luego el valor de la variable en la función padre.
 
 > Prestar atención! se le enviara a la función la dirección de memoria de la variable con el operador **"&"**
 
