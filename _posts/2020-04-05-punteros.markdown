@@ -14,7 +14,7 @@ El Objetivo de este  TP es conocer y practicar ejercicios del tema `PUNTEROS`. P
 
 Una de las características más poderosas del lenguaje C, es el puntero. Los punteros permiten simular las llamadas por referencia y crear y manipular estructuras de datos dinámicas, que pueden crecer y encogerse en tiempos de ejecución, como las pilas, árboles y listas. 
 
-Un puntero **es un objeto del lenguaje de programación, cuyo valor se refiere a (o "apunta a") otro valor almacenado en otra parte de la memoria del ordenador utilizando su dirección**. Un puntero referencia a una ubicación en memoria, y a la obtención del valor almacenado en esa ubicación se la conoce como desreferenciación del puntero. A modo de analogía, un número de página en el índice de un libro podría considerarse un puntero a la página correspondiente; desreferenciar un puntero sería como ir a la página con el número de página especificada en el índice.
+Un puntero **es un objeto del lenguaje de programación, cuyo valor se refiere a (o "apunta a") otro valor almacenado en otra parte de la memoria del ordenador utilizando su dirección**. Un puntero referencia a una ubicación en memoria, y a la obtención del valor almacenado en esa ubicación se la conoce como desreferenciación del puntero.
 
 > Es recomendable que hayas leído el material de la catedra antes de continuar!
 
