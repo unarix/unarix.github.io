@@ -1,0 +1,234 @@
+---
+layout: post
+title:  "A2K: Hosteando aplicaciones Net Core en Linux con Nginx y Kestrel"
+date:   2020-04-05 20:14:51 -0300
+categories: tuto nginx core
+---
+
+En esta guia vamos a instalar `NGINX` como proxy reverso y como server de core net el servicio `kestrel`; antes repasemos las piezas que vamos a usar:
+
+***Nginx*** ​es un servidor web/proxy inverso ligero de alto rendimiento y un proxy para protocolos de correo electrónico.​​ Es software libre y de código abierto, licenciado bajo la Licencia BSD simplificada. Nginx es ampliamente utilizado, por ser muy configurable, ligero en consumo de recursos y rápido.
+
+***Kestrel*** es el servidor web multi-plataforma que creo Microsoft y que sirve para albergar las aplicaciones web creadas con ASP.NET Core y dotarlas de manera sencilla de la infraestructura para poder ejecutarse.
+
+Porque usamos ***Nginx***? Kestrel es ideal para servir contenido dinámico desde ASP.NET Core. Sin embargo, las capacidades de servicio web no son tan ricas en características como servidores como IIS, Apache o Nginx (MS, ya posee IIS y no tiene interez en crear uno nuevo y libre). Un servidor proxy inverso puede servir contenido estático, solicitudes de almacenamiento en caché, solicitudes de compresión y conexión HTTPS desde el servidor HTTP. 
+
+***Aquí una imagen que gráfica lo que antes intento explicar:***
+
+{:refdef: style="text-align: center;"}
+![Image](/imgs/kestrel_nginx.jpg)
+{: refdef}
+> Nginx me permite atender las solicitudes http de los clientes y este redirigirlas a los contenedores que van a servir la solución. Es deducible y cabe destacar que nginx puede manejar distintos contenedores de aplicaciones sean kestrel o no.
+
+Ahora que conocemos cada pieza, lo que intentaremos es unirlas para crear un servidor de aplicaciones net core.
+
+# Pre requisitos 
+- Servidor Debian/Ubuntu con una cuenta de usuario estándar con privilegio sudo.
+- Instalar el runtime de .NET Core en el servidor.
+    - Descargar el [framework .NET Core][frame-net].
+    - Seleccione la última versión de .NET Core **LTS**!!.
+- Una aplicación ASP.NET Core cualquiera.
+
+# 1- Instalar Runtime net core:
+
+{% highlight shell %}
+
+$ wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+$ sudo dpkg -i packages-microsoft-prod.deb
+
+$ sudo apt-get update
+$ sudo apt-get install apt-transport-https
+$ sudo apt-get update
+$ sudo apt-get install aspnetcore-runtime-3.1
+
+{% endhighlight %}
+
+# 2- Realizar un publish de una aplicación cualquiera
+
+
+Crear una aplicación tipo webapp:
+{% highlight shell %}
+$ dotnet new webapp
+{% endhighlight %}
+
+Luego de que termine de crear la webapp vaciá, creamos una release:
+{% highlight shell %}
+$ dotnet publish --configuration Release
+{% endhighlight %}
+
+Esto nos va a crear un directorio, generalmente en `bin/Release/<target_framework>/publish`; esta es la aplicación que luego vamos a publicar en el server kestrel.
+
+Creamos la carpeta que va a contener nuestra aplicaciones; generalmente en: `/var/www`. Este es el lugar donde generalmente se alojan los sitios. 
+
+{% highlight shell %}
+$ mkdir /var/www
+{% endhighlight %}
+
+Copiamos el contenido del publish sobre una carpeta dentro de www:
+{% highlight shell %}
+$ sudo cp -a publish/. /var/www/webapp
+{% endhighlight %}
+
+Ahora probamos si nuestra release esta funcionando:
+{% highlight shell %}
+$ dotnet <app_assembly>.dll
+{% endhighlight %}
+
+Esto lanza en la consola algo como lo siguiente:
+{% highlight shell %}
+    info: Microsoft.Hosting.Lifetime[0]
+        Now listening on: http://localhost:5000
+    info: Microsoft.Hosting.Lifetime[0]
+        Now listening on: https://localhost:5001
+    info: Microsoft.Hosting.Lifetime[0]
+        Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+        Hosting environment: Production
+    info: Microsoft.Hosting.Lifetime[0]
+        Content root path: /var/www/webapp
+{% endhighlight %}
+
+Ahora deberías ingresar por un navegador a la url que indica y comprobar de que funciona todo bien, en mi caso `https://localhost:5001`
+
+# 3- Configurar el proxy reverso
+
+Instalar nginx:
+{% highlight shell %}
+$ sudo apt install nginx
+{% endhighlight %}
+
+Iniciar el servicio:
+{% highlight shell %}
+$ sudo service nginx start
+{% endhighlight %}
+
+Verifica que nginx esta corriendo: en un navegador `http://127.0.0.1` y deberías ver la pagina de ***"Welcome to nginx"*** (también deberías verlo desde otra pc apuntando a la ip del server)
+
+Modificaremos el archivo `/etc/nginx/sites-available/default` y agregamos o reemplazamos lo siguiente:
+
+{% highlight JSON %}
+server 
+{
+    listen        80;
+    server_name   example.com *.example.com;
+    location / {
+        proxy_pass         http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+{% endhighlight %}
+
+Asegurate de agregar a Startup.cs de tu proyecto lo siguiente
+
+> En el método Configuration:
+{% highlight C# %}
+
+using System.Net;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages();
+
+    services.Configure<ForwardedHeadersOptions>(options =>
+    {
+        options.KnownProxies.Add(IPAddress.Parse("192.168.1.TU_IP"));
+    };
+}S
+
+{% endhighlight %}
+
+Si quieres agregar otros proxies de confianza:
+
+> En el método Configure:
+{% highlight C# %}
+
+using Microsoft.AspNetCore.HttpOverrides;
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
+{% endhighlight %}
+
+# Creando el servicio de app
+
+Ahora bien, ya tenemos un servidor nginx que redirige peticiones al server kestrel en el puerto 5000; ahorra queremos que este servicio funcione sin tener que darle al comando `dotnet app.dll`:
+
+Para ello debemos crear un demonio que se ejecute automáticamente... vamos a usar a nuestro amigo system.d:
+
+{% highlight shell %}
+
+$ sudo nano /etc/systemd/system/kestrel-webapp.service
+
+{% endhighlight %}
+
+En el debemos ingresar lo siguiente:
+
+{% highlight script %}
+    [Unit]
+    Description=Example .NET Web API App running on Ubuntu
+
+    [Service]
+    WorkingDirectory=/var/www/webapp
+    ExecStart=/usr/bin/dotnet /var/www/webapp/webapp.dll
+    Restart=always
+    # Restart service after 10 seconds if the dotnet service crashes:
+    RestartSec=10
+    KillSignal=SIGINT
+    SyslogIdentifier=dotnet-example
+    User=www-data
+    Environment=ASPNETCORE_ENVIRONMENT=Development
+    Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+    [Install]
+    WantedBy=multi-user.target
+{% endhighlight %}
+
+> Environment=ASPNETCORE_ENVIRONMENT=**Development** buscara el archivo appsettings.**Development**.json de la carpeta de release!
+> User=www-data -> este es el usuario que ejecutara la aplicacion; debe existir y tener permisos de ejecucion sobre el directorio de release!
+
+Paso siguiente, guardar el archivo y habilitar el servicio:
+
+{% highlight shell %}
+sudo systemctl enable kestrel-webapp.service
+{% endhighlight %}
+
+Iniciar el servicio y verificar que este funcionando: 
+
+{% highlight shell %}
+sudo systemctl start kestrel-webapp.service
+sudo systemctl status kestrel-webapp.service
+
+kestrel-webapp.service - Example .NET Web API App running on Ubuntu
+    Loaded: loaded (/etc/systemd/system/kestrel-webapp.service; enabled)
+    Active: active (running) since Thu 2020-04-02 04:09:35 NZDT; 35s ago
+Main PID: 9021 (dotnet)
+    CGroup: /system.slice/kestrel-webapp.service
+            └─9021 /usr/local/bin/dotnet /var/www/webapp/webapp.dll
+{% endhighlight %}
+
+
+
+
+# Probando todo
+
+Desde un navegador ya deberias tener funcionando tu sitio completamente configurado con nginx y kestrel; sirviendo la solucion en la direccion 127.0.0.1 y tambien en maquinas remotas dentro de tu LAN.
+
+{% highlight shell %}
+    HTTP/1.1 200 OK
+    Server: Kestrel
+    Keep-Alive: timeout=5, max=98
+    Connection: Keep-Alive
+{% endhighlight %}
+
+> Mas data: [Host ASP.NET Core on Linux with Nginx][msk]
+
+[msk]: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1
+[frame-net]: https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1910

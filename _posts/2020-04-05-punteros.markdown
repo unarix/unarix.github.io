@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Punteros en ANSI C"
+title:  "UPE: Punteros en ANSI C"
 date:   2020-04-05 20:14:51 -0300
 categories: facu exe
 ---

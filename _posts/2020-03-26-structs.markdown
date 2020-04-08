@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Programando Structs en ANSI C - I"
+title:  "UPE: Programando Structs en ANSI C - I"
 date:   2020-03-26 01:09:59 -0300
 categories: facu exe
 ---
