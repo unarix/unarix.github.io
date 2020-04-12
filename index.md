@@ -8,3 +8,5 @@ title:
 ![Image](imgs/head.png)
 
 [gitHUB]: https://github.com/unarix?tab=repositories
+
+{% include analytics.html %}
