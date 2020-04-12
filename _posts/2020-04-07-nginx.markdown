@@ -221,12 +221,27 @@ Main PID: 9021 (dotnet)
 
 Desde un navegador ya deberias tener funcionando tu sitio completamente configurado con nginx y kestrel; sirviendo la solucion en la direccion 127.0.0.1 y tambien en maquinas remotas dentro de tu LAN.
 
+> Puedes usar: curl -v 192.168.1.xxx
+
 {% highlight shell %}
     HTTP/1.1 200 OK
     Server: Kestrel
     Keep-Alive: timeout=5, max=98
     Connection: Keep-Alive
 {% endhighlight %}
+
+# Configurar un CRT para que funcione por SSL (HTTPS)
+
+Es muy pobable que tu sitio este funcionando cuando lo probas por localhost, pero si intentas acceder desde otro equipo no funciona (conection refuse). Esto es debido a que "localhost" siempre es tomado como seguro para nginx, en cambio para otra pc esto no es asi. Lo que debemos hacer es configurar un certificado para que las conexiones sean seguras y nuestro server nginx pueda responder por https.
+
+> El proyecto core net creado por defecto usa `Properties/launchSettings.json` y es probable que `applicationUrl` este escuchando en `https://localhost:5001;http://localhost:5000)`... puedes editar esta configuracion para que todo funcione de una... pero lo que pretendemos aca es que funcione por https.
+
+
+
+
+
+
+
 
 > Mas data: [Host ASP.NET Core on Linux with Nginx][msk]
 
