@@ -3,9 +3,10 @@ layout: post
 title:  "UPE: Programando Structs en ANSI C - I"
 date:   2020-03-26 01:09:59 -0300
 categories: facu exe
+excerpt_separator: <!--more-->
 ---
 
-El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `STRUCTS`. Para poder resolverlos es necesario tener claro algunos conceptos: 
+El Objetivo de este  TP es practicar y resolver ejercicios vinculados al tema `STRUCTS`.<!--more--> Para poder resolverlos es necesario tener claro algunos conceptos: 
 
     • Librerías
     • Variables

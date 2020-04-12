@@ -3,10 +3,11 @@ layout: post
 title:  "A2K: Instalando Core y VScode en linux"
 date:   2018-11-15 01:15:11 -0150
 categories: tuto core
+excerpt_separator: <!--more-->
 ---
 
 ### Como correr las preview de core:
-
+<!--more-->
 Básico: instalar el code y el dotnet (core)
 
     apt-get install dotnet-dev-1.0.0-rc4-004771

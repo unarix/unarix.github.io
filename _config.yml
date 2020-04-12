@@ -26,9 +26,11 @@ github_username:  unarix
 # Build settings
 markdown: kramdown
 theme: minima
+show_excerpts: true 
 plugins:
   - jekyll-feed
-  - jekyll-analytics
+site.google_analytics: UA-163463331-1
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -41,9 +43,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-
-jekyll_analytics:
-  GoogleAnalytics:          # Add, if you want to track with Google Analytics
-    id: UA-163463331-1          # Required - replace with your tracking id
-    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking

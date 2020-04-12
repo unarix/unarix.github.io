@@ -1,0 +1,52 @@
+---
+---
+/*
+ * assets/main.scss
+ * the dashed lines above are required
+ */
+
+ .site-header {
+    border-top: 5px solid #424242;
+    border-bottom: 1px solid #e8e8e8;
+    min-height: 55.95px;
+    background-color: #424242;
+    position: relative;
+    position: fixed;
+    top: 0px;
+}
+
+.site-footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 30px 0;
+    background-color: #424242;
+}
+
+.site-footer a{
+    color:#fff !important;
+}
+
+.footer-col {
+    color:#fff !important;
+}
+
+
+.page-content {
+    background-color: #f7f7f7;
+}
+
+.site-nav .page-link {
+    color: #fff !important;
+    line-height: 1.5;
+}
+
+.site-title {
+    color: #fff !important;
+}
+
+.site-title, .site-title:visited {
+    color: #fff !important;
+}
+
+
+
+@import "{{ site.theme }}";

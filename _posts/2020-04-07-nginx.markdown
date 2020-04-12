@@ -3,9 +3,11 @@ layout: post
 title:  "A2K: Hosteando aplicaciones .Net Core en Linux con Nginx y Kestrel"
 date:   2020-04-05 20:14:51 -0300
 categories: tuto nginx core
+excerpt_separator: <!--more-->
 ---
 
-En esta guia vamos a instalar `NGINX` como proxy reverso y como server de core net el servicio `kestrel`; antes repasemos las piezas que vamos a usar:
+En esta guía vamos a instalar `NGINX` como proxy reverso y como server de core net el servicio `kestrel`<!--more-->; antes repasemos las piezas que vamos a usar:
+
 
 ***Nginx*** ​es un servidor web/proxy inverso ligero de alto rendimiento y un proxy para protocolos de correo electrónico.​​ Es software libre y de código abierto, licenciado bajo la Licencia BSD simplificada. Nginx es ampliamente utilizado, por ser muy configurable, ligero en consumo de recursos y rápido.
 
