@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A2K: Hosteando aplicaciones Net Core en Linux con Nginx y Kestrel"
+title:  "A2K: Hosteando aplicaciones .Net Core en Linux con Nginx y Kestrel"
 date:   2020-04-05 20:14:51 -0300
 categories: tuto nginx core
 ---
