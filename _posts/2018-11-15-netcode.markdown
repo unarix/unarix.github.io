@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A2K: Instalando Core y VScode en linux"
+title:  "LAB: Instalando Core y VScode en linux"
 date:   2018-11-15 01:15:11 -0150
 categories: tuto core
 excerpt_separator: <!--more-->

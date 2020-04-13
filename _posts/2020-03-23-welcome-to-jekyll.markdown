@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A2K: Instalando Jekill para GitHub"
+title:  "LAB: Instalando Jekill para GitHub"
 date:   2020-03-23 15:03:59 -0300
 categories: tuto Jekill
 excerpt_separator: <!--more-->
