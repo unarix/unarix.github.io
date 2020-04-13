@@ -1,7 +1,9 @@
 ---
-layout: page
+layout: about
 title: About
 permalink: /about/
 ---
 
-Nothing to do here, contact me at trash@unarix.com.ar
+![Image](/imgs/kite.gif)
+
+Contact me at: **lab@unarix.com.ar**
