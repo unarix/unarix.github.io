@@ -17,7 +17,7 @@ title: nhtello
 email: trash@unarix.com.ar
 tagline: Guiás, trabajos prácticos y manuales, trabajos de laboratorio y proyectos nerd. Lenguajes de programación C/C++, C#, ruby, python
 description: >- # this means to ignore newlines until "baseurl:"
-  Two parts kiter one part geek!
+  Guiás, trabajos prácticos y manuales, trabajos de laboratorio y proyectos nerd. Lenguajes de programación C/C++, C#, ruby, python
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "unarix.com.ar" # the base hostname & protocol for your site, e.g. http://example.com
 author: nhtello
