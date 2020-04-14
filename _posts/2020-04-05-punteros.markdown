@@ -73,6 +73,7 @@ void sumapuntero (short *puntero_nro)
 }
 {% endhighlight %}
 
+Tambien pudes usar [Joodle][Joodle], como hay argumentos de entrada utiliza el cuadro Stdin inputs.
 
 ## Ejercicios
 
