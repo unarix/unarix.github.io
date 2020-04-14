@@ -42,6 +42,7 @@ int main()
 }
 {% endhighlight %}
 
+Copia y pega este código en CondeBlocks. Si tenes problemas con CodeBlocks, en este caso también podes usar un compilador online como [Joodle][Joodle].
 
 ### Punteros con funciones
 
@@ -119,3 +120,4 @@ void main ()
 [punteros-C]: http://www.inf-cr.uclm.es/www/cglez/downloads/docencia/punteros_c.pdf
 [tipos_datos-C]: http://www.it.uc3m.es/pbasanta/asng/course_notes/data_types_es.html#data_types_integers
 [GNU-C]: https://www.it.uc3m.es/pbasanta/asng/course_notes/ctut.pdf
+[Joodle]: https://www.jdoodle.com/c-online-compiler/
