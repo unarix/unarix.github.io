@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "UPE: Compiladores online de ANSI C"
+date:   2020-05-24 14:39:24 -0300
+categories: UPE online ansic
+excerpt_separator: <!--more-->
+---
+
+Un pequeño resumen de compiladores y editores de código de `ANSI C` que se pueden encontrar online<!--more-->, sin necesidad de instalar nada. Seguramente haya muchos mas, pero vamos a categorizar los mas populares.
+
+- **Velocidad**: Cuan rápido funciona el compilador para correr un programa de no mas de 100 lineas de código.
+- **Interfaz PC**: Lo cómoda que es la interfaz (100% en base a gusto personal).
+- **Interfaz Mobile**: Puedo usarlo desde el mobil? es comodo?
+- **Soporte archivos**: Si compilo un programa que maneja archivos lo soporta?.
+
+## Los 5 mejores
+
+# 1- [OnlineGDB](https://www.onlinegdb.com/online_c_compiler)
+Online GDB es un compilador y depurador en línea para C / C ++. Usando gcc/g++ como compilador y gdb como depurador.
+>[https://www.onlinegdb.com/online_c_compiler](https://www.onlinegdb.com/online_c_compiler)
+
+1. **Velocidad:** Rápido
+2. **Interfaz PC:** Muy Buena
+3. **Interfaz Mobile:** Buena
+4. **Soporta archivos:** Muy Bueno
+
+# 2- [Repl](https://repl.it/languages/c )
+Repl.it es un IDE, editor, compilador, intérprete y REPL en línea simple pero potente. Codifica, compila, ejecuta y aloja en más de 50 lenguajes de programación.
+>[https://repl.it/languages/c ](https://repl.it/languages/c )
+
+1. **Velocidad:** Rápido
+2. **Interfaz PC:** Buena
+3. **Interfaz Mobile:** Muy Buena
+4. **Soporte archivos:** Bueno
+
+# 3- [Jdoodle](https://www.jdoodle.com/c-online-compiler/ )
+Es un compilador en línea gratuito, editor, IDE para Java, C, C ++, PHP, Perl, Python, Ruby.
+>[https://www.jdoodle.com/c-online-compiler/](https://www.jdoodle.com/c-online-compiler/ )
+
+1. **Velocidad:** Rápido
+2. **Interfaz PC:** Buena
+3. **Interfaz Mobile:** Mala
+4. **Soporte archivos:** Malo
+
+# 4- [Paiza](https://paiza.io/es/projects/new?language=c)
+Paiza.IO permite editar y copilar en línea. Es compatible con más de 20 lenguajes: C, C++, Java, Ruby, Python, PHP, Perl... y más.
+>[https://paiza.io/es/projects/new?language=c](https://paiza.io/es/projects/new?language=c)
+
+1. **Velocidad:** Lento 
+2. **Interfaz PC:** Buena
+3. **Interfaz Mobile:** Buena
+4. **Soporte archivos:** Malo 
+
+# 5- [Ideone](https://ideone.com/)
+Compile varios lenguajes de programación en línea. Agregar flujo de entrada, guardar salida, agregar notas y etiquetas.
+>[https://ideone.com/](https://ideone.com/)
+
+1. **Velocidad:** Lento
+2. **Interfaz PC:** Buena
+3. **Interfaz Mobile:** Mala
+4. **Soporte archivos:** Malo 
+
