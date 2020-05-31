@@ -1,0 +1,116 @@
+---
+layout: post
+title:  "LAB: Como usar HTTPS en Apache Server"
+date:   2020-05-31 11:05:35 -0300
+categories: lab https linux mint apache ssl
+excerpt_separator: <!--more-->
+---
+
+Vamos a ver cómo crear certificados SSL para ser utilizados con el fin de asegurar servicios como `HTTPS, IMAPS, POPS, SMTPS`, etc. Para hacerlo es necesario tener instalado `openssl` en tu equipo.<!--more--> Esta guiá esta escrita utilizando Linux Mint 19.3:
+
+## Descripción
+Cuando querramos crear los certificados existen dos posibilidades: crear certificados firmados por nosotros mismos o crear certificados firmados por una autoridad certificante (CA). En esta guiá vamos a firmarlos nosotros, para poder utilizarlo en un server de testing web (probar nuestros códigos antes de subirlos al ambiente final.
+
+Es importante que sepamos que si creamos los certificados nosotros mismos, el navegador va a advertirnos que no somos una fuente confiable. Esto es ya que no somos una entidad certificada y de confianza para nuestro navegador. 
+
+Esta situación no es importante para la finalidad de esta guía, dado que, solo queremos implementar este tipo de seguridad para desarrollar funciones de programación que no están disponibles en ambientes no seguros como HTTP.
+
+## Crear un certificado autofirmado
+Vamos a crear un certificado autofirmado; primero descarga openssl (seguro ya lo tienes instalado por default)
+
+#### Instalar openssl
+
+`sudo apt install openssl`
+
+#### Generar una clave privada
+
+`openssl genrsa -des3 -out server.key 4096`
+
+#### Generar el .csr
+Luego crear un requerimiento de firmado del certificado. Este comando pedirá una serie de datos (país, provincia, etc..). Es importante poner el “Common Name (eg, YOUR name)” el nombre del servidor, o para nuestro caso la la IP del server en nuestra LAN (suponemos que no tenemos dns).
+
+Los valores default de las preguntas se guardan en `/etc/ssl/openssl.cnf`; asique es bueno, si vas a generar varios csr, que las modifiques directamente de ahi.
+
+`openssl req -new -key server.key -out server.csr`
+
+#### Firmalo
+Ahora firmar el requerimiento de firmado. El ejemplo genera un certificado firmado válido por 365 días.
+
+`openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt`
+
+#### Crear version ssl
+Ahora crear una versión de server.key que no necesite contraseña.
+
+`openssl rsa -in server.key -out server.key.insecure`
+`mv server.key server.key.secure`
+`mv server.key.insecure server.key`
+
+## Implementar HTTPS en Apache
+
+#### Habilitar SSL en Apache
+
+A continuación habilitaremos el modulo SSL. Para ello utilizaremos *a2enmod*. 
+
+`a2enmod ssl`
+
+#### Hacer que Apache escuche en el puerto 443
+
+Para que apache escuche el puerto 443 (default https), debes indicarselo en el archivo ports.conf: /etc/apache2/ports.conf. Editalo y agrega lo siguiente:
+
+{% highlight bash %}
+
+<IfModule ssl_module>
+	Listen 443
+</IfModule>
+
+{% endhighlight %}
+
+> "**ifModule**, pregunta si el modulo `ssl_module` se encuentra habilitado; En tal caso escucha en el puerto 443."
+
+#### Definir un virtual host para HTTP
+Generalmente este paso esta en la instalacion default de apache, pero es recomendable revisarlo, porque podemos separar los sitios con HTTP de los que usan HTTPS de forma más ordenada.
+
+Habilitar los virtual hosts en Apache (Si ya lo esta, nos dira que se encuentra habilitado).
+
+`a2enmod vhost_alias`
+
+Definir un virtual host en sites-availables. Aquí al momento sólo existe un archivo que se llama `000-default.conf`. A dicho archivo, definirle en caso que no lo tenga:
+
+`NameVirtualHost *:80`
+
+De esta manera, el sitio `default` sólo es para los sitios con HTTP.
+
+#### Definir el virtual host para HTTPS
+
+Ahora vamos a crear el archivo /etc/apache2/sites-availables/ssl.conf para que todas nuestras escuchas en el puerto 443 redirijan a nuestro sitio seguro de forma automática;
+
+En la carpeta /etc/apache2/sites-availables, hay un archivo `default-ssl.conf` de ejemplo, copialo en la misma ruta y renombralo a `ssl.conf`. Luego editalo y busca la siguientes lineas:
+
+{% highlight bash %}
+    #   A self-signed (snakeoil) certificate can be created by installing
+    #   the ssl-cert package. See
+    #   /usr/share/doc/apache2/README.Debian.gz for more info.
+    #   If both key and certificate are stored in the same file, only the
+    #   SSLCertificateFile directive is needed.
+    #	SSLCertificateFile	/etc/ssl/certs/ssl-cert-snakeoil.pem
+    #	SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+    SSLCertificateFile /tu_seguridad/tu_ruta/server.crt
+    SSLCertificateKeyFile /tu_seguridad/tu_ruta/server.key
+{% endhighlight %}
+
+Reemplaza o agrega la ruta donde tienes guardados los crt y key respectivamente. De forma opcional puedes editar la carpeta donde se encuentra tu codigo que servira apache como tu pagina web. Esto esta en la linea `DocumenRoot`. 
+
+#### Habilitar el virtual host 'SSL'.
+Ahora solo queda habilitar el virtual host que has creado, para ello ejecuta el siguiente comando en la terminal como root: 
+
+`a2ensite ssl`
+
+#### Finalmente, recargar Apache.
+
+Dependiendo de tu sistema existen diferentes formas de reinicar el servicio apache. En mi caso linux-mint me permite reiniciarlo con: 
+
+`service apache2 restart`
+
+> Fuente: [MIKRO WAYS][msk]
+
+[msk]: https://www.mikroways.net/2009/06/24/habilitar-https-en-apache/
