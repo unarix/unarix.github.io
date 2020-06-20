@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "LAB: Make ControlLooks & Decorators in Haiku-OS"
-date:   2020-05-31 11:05:35 -0300
+date:   2020-06-20 20:35:43 -0300
 categories: lab guide haiku decorator controllok darktheme 
 excerpt_separator: <!--more-->
 ---
@@ -47,7 +47,7 @@ The code of the decorators are "self explained", but lets supouse that you don't
 
 Make a clon of your own repo:
 {% highlight c %}
- git clone https://github.com/your_account/haiku_darkstyle
+ git clone https://github.com/your_account/haiku_darkstyle.git
 {% endhighlight %}
 
 Lets start to inspect and modify the code of "FlatDecorator/FlatDecorator.cpp", for example:
