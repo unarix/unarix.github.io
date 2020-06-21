@@ -9,10 +9,10 @@ excerpt_separator: <!--more-->
 As much as i searched in the web, i was not able to find a small tutorial on how to develop a new window decorator or a controlLook for haiku OS<!--more-->. For this reason, i propose to make a very small guide to persons that they no have idea what are they doing, like me... this is more for my memories than with the intention of someone learning something.
 
 
-## Litle HaikuOS history:
+## Little HaikuOS history:
 Haiku began as the OpenBeOS project in 2001, the same year that Be, Inc. was bought by Palm, Inc. and BeOS development was discontinued. The focus of the project was to support the BeOS user community by creating an open-source, backward-compatible replacement for BeOS. The first project by OpenBeOS was a community-created "stop-gap" update for BeOS 5.0.3 in 2002. In 2003, the non-profit organization Haiku, Inc. was registered in Rochester, New York, to financially support development, and in 2004, after a notification of infringement of Palm's trademark of the BeOS name was sent to OpenBeOS, the project was renamed Haiku.
 
-## Understand wath is an addon
+## Understand what is an addon
 A software add-on is any third-party software program or script that is added to a program to give it additional features and abilities. Beos and Haiku uses the addons as a simple way to add caracteristics to the operative system. if you see in your files at the config directory provably see something like this structure:
 
 {:refdef: style="text-align: center;"}
