@@ -27,10 +27,10 @@ A windows decoration typically consists of a title bar, usually along the top of
 
 https://github.com/haiku/haiku/tree/master/src/add-ons/decorators
 
-The decorator is very simple, only have 2 buttons by default: close and resize. Is composed by the tab (the top bar) and the frame (3 borders that cover the rest of the window). The good thing is that the code is at our disposal so we can examine it and modify it.
+The decorator is very simple, only have 2 buttons by default: close and resize. Is composed by the tab (the top bar) and the frame (3 borders that cover the rest of the window). The good thing is that the code is at our disposal so we can examine it and modify.
 
 ## What is a ControlLook
-It is the program that implements all the instructions on how a window interface will look; for example the following controls are implented in the controlLook:
+It is the program that implements all the instructions on how a window interface will look; for example the following controls look are implented in the controlLook:
 - Textbox
 - Labels
 - Lists
@@ -43,7 +43,7 @@ All these controls are wrote in c++, things like draw the button background, bor
 ----
 
 ## Starting to modify the Decorator
-The code of the decorators are "self explained", but lets supouse that you don't understand nothing about what are you doing. So, start forking this repo: [GitHub][github_unarix]; we are going to use this code as our SDK, because in this repo, are all the libraries needed to build your own decorator. 
+The code of the decorators are "self explained", but lets supouse that you don't understand nothing about what are you doing. So, start forking this repo: [github/unarix/haiku_darkstyle/][github_unarix]; we are going to use this code as our SDK, because this repo, contains all the libraries needed to build your own decorator. 
 
 Make a clon of your own repo:
 {% highlight c %}
