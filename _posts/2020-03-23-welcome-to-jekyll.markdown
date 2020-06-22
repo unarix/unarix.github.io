@@ -6,7 +6,7 @@ categories: tuto Jekill
 excerpt_separator: <!--more-->
 ---
 
-### 10 pasos para instalar jeKill y no morir en el intento
+### 10 pasos para instalar jeKill sobre linux y publicarlo en GitHub
 <!--more-->
 Aca va en 10 pasos simples como tener funcionando `Jekill` sobre `Linux mint/ubuntu` en mi caso estoy usando Mint 19.3:
 
