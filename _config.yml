@@ -19,7 +19,7 @@ tagline: Guiás, trabajos prácticos y manuales, trabajos de laboratorio y proye
 description: >- # this means to ignore newlines until "baseurl:"
   Guiás, trabajos prácticos y manuales, trabajos de laboratorio y proyectos. Lenguajes de programación C/C++, C#, ruby, python
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "www.unarix.com.ar" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.unarix.com.ar" # the base hostname & protocol for your site, e.g. http://example.com
 author: nhtello
 #twitter_username: jekyllrb
 github_username:  unarix
