@@ -12,6 +12,10 @@ As much as i searched in the web, i was not able to find a small tutorial on how
 ## Little HaikuOS history:
 Haiku began as the OpenBeOS project in 2001, the same year that Be, Inc. was bought by Palm, Inc. and BeOS development was discontinued. The focus of the project was to support the BeOS user community by creating an open-source, backward-compatible replacement for BeOS. The first project by OpenBeOS was a community-created "stop-gap" update for BeOS 5.0.3 in 2002. In 2003, the non-profit organization Haiku, Inc. was registered in Rochester, New York, to financially support development, and in 2004, after a notification of infringement of Palm's trademark of the BeOS name was sent to OpenBeOS, the project was renamed Haiku.
 
+{:refdef: style="text-align: center;"}
+![Image](/imgs/beos_cd.png)
+{: refdef}
+
 ## Understand what is an addon
 A software add-on is any third-party software program or script that is added to a program to give it additional features and abilities. Beos and Haiku uses the addons as a simple way to add caracteristics to the operative system. if you see in your files at the config directory provably see something like this structure:
 
@@ -25,7 +29,7 @@ In this folder you can add the addons what you like. Haiku have two folders when
 ## What is a Decorator
 A windows decoration typically consists of a title bar, usually along the top of each window and a minimal border around the other three sides. The decorators are self explained, you can surf the code of the default decorator here:
 
-https://github.com/haiku/haiku/tree/master/src/add-ons/decorators
+[https://github.com/haiku/haiku/tree/master/src/add-ons/decorators][decor_haiku]
 
 The decorator is very simple, only have 2 buttons by default: close and resize. Is composed by the tab (the top bar) and the frame (3 borders that cover the rest of the window). The good thing is that the code is at our disposal so we can examine it and modify.
 
@@ -263,4 +267,4 @@ The simplest way, is modify the colors of each component in the appearance dialo
 
 [github_unarix]: https://github.com/unarix/haiku_darkstyle
 [link_themes]: https://www.haiku-os.org/blog/mmu_man/2008-01-25_the_bowels_of_the_theme_manager_or_how_to_make_haiku_as_ugly_as_zeta/
-
+[decor_haiku]:https://github.com/haiku/haiku/tree/master/src/add-ons/decorators
