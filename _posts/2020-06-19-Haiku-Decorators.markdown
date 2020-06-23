@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "LAB: Make ControlLooks & Decorators in Haiku-OS"
+title:  "LAB: Make ControlLooks & Decorators in Haiku"
 date:   2020-06-20 20:35:43 -0300
 categories: lab guide haiku decorator controllok darktheme 
 excerpt_separator: <!--more-->
 ---
 
-As much as i searched in the web, i was not able to find a small tutorial on how to develop a new window decorator or a controlLook for haiku OS<!--more-->. For this reason, i propose to make a very small guide to persons that they no have idea what are they doing (like me)... this is more for my memories than with the intention of someone learning something.
+As much as i searched in the web, i was not able to find a small tutorial on how to develop a new window decorator or a controlLook for Haiku OS<!--more-->. For this reason, i propose to make a very small guide to persons that they no have idea what are they doing (like me)... this is more for my memories than with the intention of someone learning something.
 
 >EDIT: This adventure was born in the following thread of haiku discuss forum: [https://discuss.haiku-os.org/t/decorators-and-controllook/9611/2][haiku_discuss]
 

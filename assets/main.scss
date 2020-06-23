@@ -15,7 +15,6 @@
     top: 0px;
 }
 
-
 .page-content {
     background-color: #f7f7f7;
 }
@@ -33,12 +32,10 @@
     color: #fff !important;
 }
 
-
 @media screen and (max-width: 600px) { 
     .site-nav .page-link { color: #3f3f3f !important; line-height: 1.5; }
     .site-nav .page-link { display: block; padding: 30px 40px !important; margin-left: 30px !important; }
     .site-nav .page-link:not(:last-child) { margin-right: 0; } 
 }
-
 
 @import "{{ site.theme }}";
