@@ -43,7 +43,11 @@
             position: absolute;
             bottom: 0;
         }
-        
+        .center {
+            text-align: center;
+            padding: 50px 0;
+            color:aliceblue;
+        }
     </style>
     <body class="bg-light">
         <div class="container">
@@ -73,7 +77,7 @@
 
         for (i = 1; i < 101; i++) {
             //html = html + '<img style="width:100px" src="'+i+'.jpg" />';
-            html = html + '<div class="center-cropped img-thumbnail rounded float-left mx-auto" style="background-image: url('+i+'.jpg);" onclick="show('+i+');"> </div>'
+            html = html + '<div class="center-cropped img-thumbnail rounded float-left mx-auto center" style="background-image: url('+i+'.jpg);" onclick="show('+i+');">'+ i +'</div>'
             //html = html + '<img src="'+i+ '.jpg" class="img-thumbnail rounded float-left" alt="Responsive image">';
 
         }
