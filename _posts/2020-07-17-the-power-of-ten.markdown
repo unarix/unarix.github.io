@@ -48,6 +48,7 @@ Un error usando **un puntero puede bloquear el sistema**, y a veces puede ser di
 **Es deseable que el compilador no emita estos warnings** ya que hará que el programa sea menos propenso a errores.
 
 ### Fuentes:
-Wikipedia: [https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code][Wikipedia]
-NASA: [http://lars-lab.jpl.nasa.gov/JPL_Coding_Standard_C.pdf][nasa]
-Spinroot: [http://spinroot.com/gerard/pdf/P10.pdf][spinroot]
+>
+- [Wikipedia](https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code)
+- [NASA](http://lars-lab.jpl.nasa.gov/JPL_Coding_Standard_C.pdf)
+- [Spinroot](http://spinroot.com/gerard/pdf/P10.pdf)
