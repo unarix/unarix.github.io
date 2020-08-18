@@ -8,19 +8,19 @@ excerpt_separator: <!--more-->
 
 Hace unos años, en 2006, la NASA lanzo un documento en el que sugieren sus 10 reglas para escribir sistemas críticos, es decir, código de alta calidad,<!--more--> mantenible y menos propenso a los fallos.
 
->*Las reglas están pensadas para el lenguaje C/C++, pero son bastante generales y se pueden aplicar a cualquier lenguaje y sistema, deberíamos hacerle caso aunque no se trate de sistemas críticos. La mayoría de las reglas son de puro sentido común, pero lo cierto es que luego, en muchas ocasiones, no las aplicamos.*
+>Las reglas están pensadas para el lenguaje C/C++, pero son bastante generales y se pueden aplicar a cualquier lenguaje y sistema, deberíamos hacerle caso aunque no se trate de sistemas críticos. La mayoría de las reglas son de puro sentido común, pero lo cierto es que luego, en muchas ocasiones, no las aplicamos.
 
 ## Resumen:
 
 ### 1- Evita las construcciones de flujo complejas, como GOTO y la recursividad.
-Usar GOTO es una mala práctica, existen diversos modos de evitar su uso, aunque en algunos casos parezca más rápido y que podría ahorrar espacio o trabajo el hecho de usar GOTO, definitivamente a la hora de hacer mantenimiento en aplicaciones extensas o no desarrolladas por uno mismo, es mucho más complejo de analizar o extender si dichas aplicaciones poseen internamente el uso de esta instrucción.
+**Usar GOTO es una mala práctica**, existen diversos modos de evitar su uso, aunque en algunos casos parezca más rápido y que podría ahorrar espacio o trabajo el hecho de usar GOTO, definitivamente a la hora de hacer mantenimiento en aplicaciones extensas o no desarrolladas por uno mismo, es mucho más complejo de analizar o extender si dichas aplicaciones poseen internamente el uso de esta instrucción.
 La recursividad se debe usar cuando sea realmente necesaria, es decir, cuando no exista una solución iterativa simple.
 
 ### 2- Todos los bucles deben tener límites fijos.
 Por definición **un bucle debe contener condiciones que establezcan cuándo empieza y cuándo termina**, de manera que, mientras las condiciones se cumplan, ejecute una secuencia de código de manera repetitiva. En el caso de ciclo infinito, como la condición de finalización no se alcanza, el bucle sigue ejecutando el segmento de código indefinidamente.
 
 ### 3- Evita el uso de asignación dinámica de memoria después de la inicialización (malloc). 
-Esto en lenguajes con garbage-collector o similares es menos crítico, pero aún así es posible crear fugas de memoria si no somos cuidadosos. Además, **la asignación dinámica no es recomendable por la degradación de performance**; siempre que puedas, evitarlo.
+Esto, en lenguajes con garbage-collector o similares es menos crítico, pero aún así es posible crear fugas de memoria si no somos cuidadosos. Además, **la asignación dinámica no es recomendable por la degradación de performance**; siempre que puedas, evitarlo.
 
 ### 4- Ninguna función debería ser tan larga que no pueda imprimirse en una sola carilla de una hoja. 
 Esto es, como mucho unas **60 líneas** sin contar comentarios.
@@ -48,6 +48,6 @@ Un error usando **un puntero puede bloquear el sistema**, y a veces puede ser di
 **Es deseable que el compilador no emita estos warnings** ya que hará que el programa sea menos propenso a errores.
 
 ### Fuentes:
-[Wikipedia]:https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code
-[nasa]:http://lars-lab.jpl.nasa.gov/JPL_Coding_Standard_C.pdf
-[spinroot]:http://spinroot.com/gerard/pdf/P10.pdf
+[https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code][Wikipedia]
+[http://lars-lab.jpl.nasa.gov/JPL_Coding_Standard_C.pdf][nasa]
+[http://spinroot.com/gerard/pdf/P10.pdf][spinroot]
