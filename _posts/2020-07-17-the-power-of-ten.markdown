@@ -6,9 +6,9 @@ categories: UPE programacion mandamientos nasa código ansic
 excerpt_separator: <!--more-->
 ---
 
-Hace unos años, en 2006, la NASA lanzo un documento de solo 6 páginas en el que sugieren sus 10 reglas para escribir sistemas críticos, es decir, código de alta calidad,<!--more--> mantenible y menos propenso a los fallos.
+Hace unos años, en 2006, la NASA lanzo un documento en el que sugieren sus 10 reglas para escribir sistemas críticos, es decir, código de alta calidad,<!--more--> mantenible y menos propenso a los fallos.
 
-*Las reglas están pensadas para el lenguaje C/C++, pero son bastante generales y se pueden aplicar a cualquier lenguaje y sistema, deberíamos hacerle caso aunque no se trate de sistemas críticos. La mayoría de las reglas son de puro sentido común, pero lo cierto es que luego, en muchas ocasiones, no las aplicamos.*
+>*Las reglas están pensadas para el lenguaje C/C++, pero son bastante generales y se pueden aplicar a cualquier lenguaje y sistema, deberíamos hacerle caso aunque no se trate de sistemas críticos. La mayoría de las reglas son de puro sentido común, pero lo cierto es que luego, en muchas ocasiones, no las aplicamos.*
 
 ## Resumen:
 
