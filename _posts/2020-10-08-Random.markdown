@@ -7,7 +7,7 @@ excerpt_separator: <!--more-->
 ---
 
 
-A veces queremos que nuestro programa obtenga números de forma aleatoria, por ejemplo, para simular una tirada de dados o el reparto de cartas en un juego. <!--more--> Intente desarrollar los siguientes ejercicios utilizando lo aprendido en clase con lenguaje C. En caso de recurrir a Internet recuerde para que ejercicio tuvo que hacerlo y que fue lo que necesito buscar.
+A veces queremos que nuestro programa obtenga números de forma `aleatoria`, por ejemplo, para simular una tirada de dados o el reparto de cartas en un juego. <!--more--> Intente desarrollar los siguientes ejercicios utilizando lo aprendido en clase con lenguaje C. En caso de recurrir a Internet recuerde para que ejercicio tuvo que hacerlo y que fue lo que necesito buscar.
 
 ## Random:
 
