@@ -6,10 +6,8 @@ categories: UPE Vectores/Arreglos en ANSIC
 excerpt_separator: <!--more-->
 ---
 
-Los `arreglos` son estructuras de datos consistentes en un conjunto de datos del mismo tipo. Los arreglos tienen un tamaño que es la cantidad de objetos del mismo tipo <!--more--> 
-que pueden almacenar. Los arreglos son entidades estáticas debido a que se declaran de un cierto tamaño y lo conservan a lo largo de toda la ejecución del programa en el cual fue declarado.
-
-Intente desarrollar los siguientes ejercicios utilizando lo aprendido en clase con lenguaje C. En caso de recurrir a Internet recuerde para que ejercicio tuvo que hacerlo y que fue lo que necesito buscar.
+Los `arreglos` son estructuras de datos consistentes en un conjunto de datos del mismo tipo. Los arreglos tienen un tamaño que es la cantidad de objetos del mismo tipo 
+que pueden almacenar. Los arreglos son entidades estáticas debido a que se declaran de un cierto tamaño y lo conservan a lo largo de toda la ejecución del programa en el cual fue declarado. Intente desarrollar los siguientes ejercicios... <!--more--> utilizando lo aprendido en clase con lenguaje C. En caso de recurrir a Internet recuerde para que ejercicio tuvo que hacerlo y que fue lo que necesito buscar.
 
 ## Vectores:
 
