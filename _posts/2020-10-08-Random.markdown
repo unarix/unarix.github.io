@@ -1,0 +1,83 @@
+---
+layout: post
+title:  "UPE: Función Random en ANSIC"
+date:   2020-10-08 13:11:33 -0300
+categories: UPE Funciones Random ANSIC
+excerpt_separator: <!--more-->
+---
+
+
+A veces queremos que nuestro programa obtenga números de forma aleatoria, por ejemplo, para simular una tirada de dados o el reparto de cartas en un juego. <!--more--> Intente desarrollar los siguientes ejercicios utilizando lo aprendido en clase con lenguaje C. En caso de recurrir a Internet recuerde para que ejercicio tuvo que hacerlo y que fue lo que necesito buscar.
+
+## Random:
+
+### 1- Diez valores random
+Realice un programa que imprima 10 valores aleatorios y los imprima en pantalla.
+
+{% highlight c++ %}
+    short i=0;
+    srand(time(NULL)); //<-- Semilla con la hora!
+
+    while(i<10)
+    {
+        printf("El valor generado es: %c\n", rand() % 127);
+        i++;
+    }
+{% endhighlight %}
+
+### 2- Aleatorios entre maximos y minimos
+Crear el código de un programa que genere tres números enteros aleatorios A, B, C comprendidos entre 40 y 90, luego los muestre en pantalla.
+
+{% highlight c++ %}
+    short A = 0;
+    short B = 0;
+    short C = 0;
+
+    // La formula para max y min es: rand () % (HASTA-DESDE+1) + DESDE
+    A = rand () % (90-40+1) + 40;
+    B = rand () % (90-40+1) + 40;
+    C = rand () % (90-40+1) + 40;
+
+    printf("El valor generado para A es: %hd\n", A);
+    printf("El valor generado para B es: %hd\n", B);
+    printf("El valor generado para C es: %hd\n", C);
+{% endhighlight %}
+
+### 3- Funcion que retorna randoms
+Crear una función que retorne valores aleatorios, luego realizar 10 llamadas e imprimir los resultados en pantalla.
+
+{% highlight c++ %}
+
+    int main()
+    {
+        short numero;
+        short i=0;
+
+        while(i<10)
+        {
+            printf("Aleatorio: %hd\n", genRandoms(20));
+        }
+        
+        return 0;
+    }
+
+    short genRandoms(short N)
+    {
+        return rand () % (N-10+1) + 10;   // Este está entre 10 y N
+    }
+
+{% endhighlight %}
+
+### 4- Funcion que retorna random con semilla de tiempo
+Crear una función que al enviarle por parámetro el valor máximo retorne valores aleatorios tomando en cuenta a la hora como semilla inicial. Imprimir 10 llamadas a esta función.
+
+{% highlight c++ %}
+    Hacerlo usando: srand(time(NULL));
+{% endhighlight %}
+
+### 5- Tirar los dados
+Crear una función que tire los dados, al enviarle un valor entre 0 y 6 retorne un valor comprendido entre esos dos números tomando la hora como semilla inicial. El programa debe arrojar los dados 10 veces.
+
+{% highlight c++ %}
+    Hacerlo!!
+{% endhighlight %}
