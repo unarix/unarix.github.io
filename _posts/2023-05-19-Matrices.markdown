@@ -8,24 +8,34 @@ excerpt_separator: <!--more-->
 
 Una matriz es un **vector de vectores** o un también llamado `array bidimensional`. Una matriz bidimensional se podría representar gráficamente como una tabla con filas y columnas (imaginemos una tabla de Excel). <!--more--> Estos, se definen igual que los vectores excepto que se requiere un índice por cada dimensión, esto quiere decir que hacen falta dos índices para indicar en que posición de la matriz esta el dato.
 
-Su sintaxis es la siguiente: {% highlight c++ %} tipo nombre [tamaño 1][tamaño 2]...;{% endhighlight %}
+Su sintaxis es la siguiente: {% highlight c++ %} tipo nombre [tamanio 1][tamanio 2]...;{% endhighlight %}
 
 Durante la declaración de un `array multidimensional` también podemos inicializar sus componentes indicando la lista de los valores entre llaves. En el interior de la lista, los componentes de cada línea del array son encerrados nuevamente entre llaves. Para hacer más clara la visibilidad de los elementos del array, podemos indicarlos en varias líneas, por ejemplo así:
 
 {% highlight c++ %}
     int A[3][4] = {\{ 0,1,2,3},{ 1,2,3,4},{ 2,3,4,5}\}; 
 {% endhighlight %}
+> Nota: No tener en cuenta las (\) barras!!!
 
 ## Ejemplo practico:
 
 ### 1- Estacionamiento de un solo piso (Matriz bidimencional)
-Realice un programa que contenga un menú en el cual la opción uno me permita ingresar autos a un estacionamiento que tiene un solo piso (planta baja). Al ingresar el vehículo debe solicitarse en que posición va a estar ubicado y además una serie de datos propios del auto, como por ejemplo: Marca, Modelo y Patente/Matricula.
+Realice un programa que contenga un menú en el cual me permita ingresar autos a un estacionamiento que tiene un solo piso (planta baja). 
+
+#### Menu opción uno:
+
+Si preciono la opcion uno, debe permitirme ingresar un vehículo para el cual debe solicitarse en que posición va a estar ubicado y además una serie de datos propios del auto, como por ejemplo: Marca, Modelo y Patente/Matricula.
 
 {:refdef: style="text-align: center;"}
 ![Image](/imgs/matrix_1.png)
 {: refdef}
 
+#### Menu opción dos:
+
 La opción dos del menu, debe imprimir gráficamente el estacionamiento, indicando en aquellas posiciones en las que haya estacionado un auto (como muestra la imagen).
+
+#### Menu opción tres:
+La ultima opción del menú debe permitirme egresar un auto del estacionamiento, para ello se le solicitara al usuario que ingrese la posición del vehículo, si la posición es correcta, se mostraran los datos del vehículo y solicitara que confirme si quiere retirarlo.
 
 ### 2- Codigo:
 
