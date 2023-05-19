@@ -13,7 +13,7 @@ Su sintaxis es la siguiente: {% highlight c++ %} tipo nombre [tamaño 1][tamaño
 Durante la declaración de un `array multidimensional` también podemos inicializar sus componentes indicando la lista de los valores entre llaves. En el interior de la lista, los componentes de cada línea del array son encerrados nuevamente entre llaves. Para hacer más clara la visibilidad de los elementos del array, podemos indicarlos en varias líneas, por ejemplo así:
 
 {% highlight c++ %}
-    int A[3][4] ={{ 0,1,2,3},{ 1,2,3,4},{ 2,3,4,5}}; 
+    int A[3][4] = {/{ 0,1,2,3},{ 1,2,3,4},{ 2,3,4,5}/}; 
 {% endhighlight %}
 
 ## Ejemplo practico:
