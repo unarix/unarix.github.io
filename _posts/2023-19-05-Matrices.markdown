@@ -1,0 +1,155 @@
+---
+layout: post
+title:  "UPE: Matrices en ANSIC"
+date:   2023-05-19 11:10:06 -0300
+categories: UPE Matrices ANSIC
+excerpt_separator: <!--more-->
+---
+
+Una matriz es un **vector de vectores** o un también llamado `array bidimensional`. Una matriz bidimensional se podría representar gráficamente como una tabla con filas y columnas (imaginemos una tabla de Excel). <!--more--> Estos, se definen igual que los vectores excepto que se requiere un índice por cada dimensión, esto quiere decir que hacen falta dos índices para indicar en que posición de la matriz esta el dato.
+
+Su sintaxis es la siguiente: {% highlight c++ %} tipo nombre [tamaño 1][tamaño 2]...;{% endhighlight %}
+
+Durante la declaración de un `array multidimensional` también podemos inicializar sus componentes indicando la lista de los valores entre llaves. En el interior de la lista, los componentes de cada línea del array son encerrados nuevamente entre llaves. Para hacer más clara la visibilidad de los elementos del array, podemos indicarlos en varias líneas, por ejemplo así:
+
+{% highlight c++ %}
+    int A[3][4] ={{ 0,1,2,3},
+    { 1,2,3,4},
+    { 2,3,4,5}}; 
+{% endhighlight %}
+
+## Ejemplo practico:
+
+### 1- Estacionamiento de un solo piso (Matriz bidimencional)
+Realice un programa que contenga un menú en el cual la opción uno me permita ingresar autos a un estacionamiento que tiene un solo piso (planta baja). Al ingresar el vehículo debe solicitarse en que posición va a estar ubicado y además una serie de datos propios del auto, como por ejemplo: Marca, Modelo y Patente/Matricula.
+
+{:refdef: style="text-align: center;"}
+![Image](/imgs/matrix_1.png)
+{: refdef}
+
+La opción dos del menu, debe imprimir gráficamente el estacionamiento, indicando en aquellas posiciones en las que haya estacionado un auto (como muestra la imagen).
+
+### 2- Codigo:
+
+{% highlight c++ %}
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void imprimirMenu();
+
+struct autox{
+    short id;
+    char marca[80];
+    char modelo[80];
+    char patente[80];
+};
+
+int main(void){
+    struct autox autos[7][7];
+    short contador = 0;
+    short fila = 0;
+    short posicion = 0;
+    short menu = 0;
+    short i, j = 0;
+    short respuesta = 0;
+
+    system("cls");
+    printf(" *** Bienvenido a estacionamientos UPE...  *** /n");
+
+    for(i=0 ; i < 7 ; i++ )
+    {
+        for(j=0 ; j < 7 ; j++ )
+        {
+            autos[i][j].id = 0;
+        }
+    }
+
+    do{
+        imprimirMenu();
+
+        scanf(" %hd", &menu);
+
+        switch(menu){
+            case 1:  //Ingresar un auto
+                printf("\n");
+                printf(" >> Ingrese la fila: ");
+                scanf("%hd", &fila);
+                printf(" >> Ingrese la posicion: ");
+                scanf("%hd", &posicion);
+
+                autos[fila][posicion].id = 1+fila+posicion;
+                printf(" >> Ingrese la marca: ");
+                scanf(" %s", autos[fila][posicion].marca);
+                printf(" >> Ingrese el modelo: ");
+                scanf(" %s", autos[fila][posicion].modelo);
+                printf(" >> Ingrese la patente: ");
+                scanf(" %s", autos[fila][posicion].patente);
+            break;
+            case 2:   // imprimir grilla del estacionamiento
+                printf("\n");
+                for(i=0 ; i < 7 ; i++ )
+                {
+                    for(j=0 ; j < 7 ; j++ )
+                    {
+                        printf("|   |        ");
+                    }
+                    printf("\n");
+                    for(j=0 ; j < 7 ; j++ )
+                    {
+                        if(autos[i][j].id > 0)
+                            printf("|   | <[%hd%hd]] ",i,j);
+                        else
+                            printf("|   |        ");
+                    }
+                    printf("\n");
+                    for(j=0 ; j < 7 ; j++ )
+                    {
+                        printf("| | |        ");
+                    }
+                    printf("\n");
+                    j=0;
+                }
+                printf("\n");
+                system("pause");
+            break;
+            case 3:  //Retirar
+                printf("\n");
+                printf(" >> Ingrese la fila: ");
+                scanf("%hd", &fila);
+                printf(" >> Ingrese la posicion: ");
+                scanf("%hd", &posicion);
+                if(autos[fila][posicion].id > 0){
+                    printf(" >> Ingrese 1 si esta seguro de retirar el %s %s con patente %s?: ", autos[fila][posicion].marca, autos[fila][posicion].modelo, autos[fila][posicion].patente);
+                    scanf("%hd", &respuesta);
+                    if(respuesta == 1)
+                    {
+                        autos[fila][posicion].id = 0;
+                        printf("\n Auto retirado, gracias por estacionar en la UPE");
+                    }
+                    else{
+                        printf("\n Operacion cancelada");
+                    }
+                }
+                else{
+                    printf(" >> Error: No hay un auto en esa posicion\n");
+                }
+                printf("\n");
+                system("pause");
+            break;
+        }
+    } while ( menu != 0 );
+
+    return 0;
+}
+
+void imprimirMenu(){
+        system("cls");
+        printf("\nPresione 1 para ingresar un auto.");
+        printf("\nPresione 2 para mostrar la ocupacion.");
+        printf("\nPresione 3 para retirar un auto.");
+        printf("\nPresione 0 para salir.");
+        printf("\opción:");
+}
+
+{% endhighlight %}
