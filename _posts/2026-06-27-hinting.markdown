@@ -48,4 +48,8 @@ Here is the difference. It might look subtle at first glance, but in daily deskt
 {:refdef: style="text-align: center;"}
 ![Compare1](/imgs/wintabs_compare_1.png) ![Compare2](/imgs/wintabs_compare_2.png) ![Compare3](/imgs/wintabs_compare_3.png)
 {:refdef}
+
+* **On the left (Normal Hinting):** Look closely at the words **"quick"** or **"brown"**. The letters look excessively "fat," and their internal counters (like the loops in the **q**, **u**, or **o**) are heavily compressed. The gray antialiasing on the edges is so thick that it creates that "smudge effect" mentioned earlier. The text almost looks slightly out of focus.
+* **On the right (Light Hinting):** What a difference! The letters maintain their bold weight, but the edges are perfectly clean. The inner counters of the **q** and **o** have reclaimed their white space, allowing the typography to "breathe." The contrast against the background is sharp, making it infinitely easier to read.
+
 With this change, Haiku OS doesn't just get its sharpness back—it aligns itself with modern software engineering best practices for font rendering. My eyes are incredibly grateful!
