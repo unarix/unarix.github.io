@@ -46,7 +46,14 @@ Apple has always held a strict philosophy: respect the type designer's original 
 Here is the difference. It might look subtle at first glance, but in daily desktop usage, the change is massive and the visual comfort is noticed instantly:
 
 {:refdef: style="text-align: center;"}
-![Compare1](/imgs/wintabs_compare_1.png) ![Compare2](/imgs/wintabs_compare_2.png) ![Compare3](/imgs/wintabs_compare_3.png)
+![Compare1](/imgs/wintabs_compare_1.png) 
+{:refdef}
+
+* **Normal Hinting (Left):** Notice how the internal counters (the loops) of both the **"e"** and **"a"** are almost completely choked or blocked out by dark pixels. Because the algorithm forces the font edges to snap rigidly to the horizontal pixel grid, it bloats the characters, leaving no room for the background to show through. This is exactly what causes that blurry, muddy "smudge effect" on your screen.
+* **Light Hinting (Right):** By lifting the horizontal grid restrictions, the font can finally breathe. Look at the loop of the **"e"** and the upper curve of the **"a"**—the inner spacing is perfectly preserved, creating a clear opening. The letters retain their true geometric shapes, resulting in crisp, well-defined characters that are significantly easier on the eyes.
+
+{:refdef: style="text-align: center;"}
+![Compare2](/imgs/wintabs_compare_2.png) ![Compare3](/imgs/wintabs_compare_3.png)
 {:refdef}
 
 * **On the left (Light Hinting):** What a difference! The letters maintain their bold weight, but the edges are perfectly clean. The inner counters of the **q** and **o** have reclaimed their white space, allowing the typography to "breathe." The contrast against the background is sharp, making it infinitely easier to read.
