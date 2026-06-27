@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Blurry Fonts in Haiku OS: How "Light Hinting" Saved My Eyes"
-date:   2026-06-27 00:15:11 -0150
+title: "Blurry Fonts in Haiku OS: How 'Light Hinting' Saved My Eyes"
+date: 2026-06-27 00:15:11 -0150
 categories: haiku
 excerpt_separator: <!--more-->
 ---
@@ -44,6 +44,6 @@ Here is the difference. It might look subtle at first glance, but in daily deskt
 
 {:refdef: style="text-align: center;"}
 ![Image](/imgs/screenshot1.png)
-{: refdef}
+{:refdef}
 
 With this change, Haiku OS doesn't just get its sharpness back—it aligns itself with modern software engineering best practices for font rendering. My eyes are incredibly grateful!
