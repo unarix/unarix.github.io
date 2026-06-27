@@ -28,7 +28,7 @@ The breakthrough came when I implemented Light Hinting into the system.
 Unlike the normal mode, Light Hinting is much more permissive: it prioritizes the fidelity of the font's original curves over a rigid pixel alignment. It strictly adjusts the font only on the vertical axis (so letters don't "bounce" up and down on the baseline), but leaves the horizontal axis completely unrestricted.
 
 By no longer forcing the typography horizontally, the engine respected the native design of the bold font. The letters regained their internal shapes, the blurry gray borders disappeared, and the text transformed from a muddy smudge into something clean, sharp, and highly readable.
-###A Modern Industry Standard
+### A Modern Industry Standard
 
 Haiku is not the first to hit this wall. In fact, the tech industry realized this issue over a decade ago, and every major modern operating system has migrated to Light Hinting (or similar approaches) by default:
 
