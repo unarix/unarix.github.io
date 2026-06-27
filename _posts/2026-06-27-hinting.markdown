@@ -46,15 +46,6 @@ Apple has always held a strict philosophy: respect the type designer's original 
 Here is the difference. It might look subtle at first glance, but in daily desktop usage, the change is massive and the visual comfort is noticed instantly:
 
 {:refdef: style="text-align: center;"}
-![Image](/imgs/wintabs_compare_1.png)
+![Compare1](/imgs/wintabs_compare_1.png) ![Compare2](/imgs/wintabs_compare_2.png) ![Compare3](/imgs/wintabs_compare_3.png)
 {:refdef}
-
-{:refdef: style="text-align: center;"}
-![Image](/imgs/wintabs_compare_2.png)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-![Image](/imgs/wintabs_compare_3.png)
-{:refdef}
-
 With this change, Haiku OS doesn't just get its sharpness back—it aligns itself with modern software engineering best practices for font rendering. My eyes are incredibly grateful!
