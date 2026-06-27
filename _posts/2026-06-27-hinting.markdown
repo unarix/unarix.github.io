@@ -49,14 +49,16 @@ Here is the difference. It might look subtle at first glance, but in daily deskt
 ![Compare1](/imgs/wintabs_compare_1.png) 
 {:refdef}
 
-* **Normal Hinting (Left):** Notice how the internal counters (the loops) of both the **"e"** and **"a"** are almost completely choked or blocked out by dark pixels. Because the algorithm forces the font edges to snap rigidly to the horizontal pixel grid, it bloats the characters, leaving no room for the background to show through. This is exactly what causes that blurry, muddy "smudge effect" on your screen.
-* **Light Hinting (Right):** By lifting the horizontal grid restrictions, the font can finally breathe. Look at the loop of the **"e"** and the upper curve of the **"a"**—the inner spacing is perfectly preserved, creating a clear opening. The letters retain their true geometric shapes, resulting in crisp, well-defined characters that are significantly easier on the eyes.
+
+* **Normal Hinting (Left):** Notice how the internal counters of both the **"e"** and **"a"** are partially obstructed by darker pixels. Because the algorithm forces the font edges to align strictly with the horizontal pixel grid, the characters become thicker, reducing the inner negative space. This results in the blurry, slightly muddy appearance on lower-resolution screens.
+* **Light Hinting (Right):** By relaxing the horizontal grid restrictions, the font preserves its original shapes. Look at the center of the **"e"** and the opening of the **"a"**—the inner spacing is kept open and clear. The letters retain their intended geometry, making the text sharper and easier to read.
+
 
 {:refdef: style="text-align: center;"}
 ![Compare2](/imgs/wintabs_compare_2.png) ![Compare3](/imgs/wintabs_compare_3.png)
 {:refdef}
 
-* **On the left (Light Hinting):** What a difference! The letters maintain their bold weight, but the edges are perfectly clean. The inner counters of the **q** and **o** have reclaimed their white space, allowing the typography to "breathe." The contrast against the background is sharp, making it infinitely easier to read.
+* **On the left (Light Hinting):** The letters maintain their bold weight, but the edges are perfectly clean. The inner counters of the **q** and **o** have reclaimed their white space, allowing the typography to "breathe." The contrast against the background is sharp, making it infinitely easier to read.
 * **On the right (Normal Hinting):** Look closely at the words **"quick"** or **"brown"**. The letters look excessively "fat," and their internal counters (like the loops in the **q**, **u**, or **o**) are heavily compressed. The gray antialiasing on the edges is so thick that it creates that "smudge effect" mentioned earlier. The text almost looks slightly out of focus.
 
 
