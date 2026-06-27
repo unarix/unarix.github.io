@@ -7,7 +7,7 @@ excerpt_separator: <!--more-->
 ---
 
 For a while now, I’ve been noticing that Haiku OS had a bit of an issue—at least to my eyes—with how it rendered its fonts. On window tabs, the typography looked heavily smudged, to the point where it was actually hard to read smoothly.
-
+<!--more-->
 For months, my temporary fix on every clean install was simply changing the default tab font to a different one. But after doing this repeatedly across multiple machines, I got tired of the band-aid fix and decided to dig into the root cause: Why does Haiku render bold fonts so poorly? I dove into the source code and the rendering engine, and the answer led me to a fundamental concept in digital typography: Hinting.
 ### What is Hinting?
 
