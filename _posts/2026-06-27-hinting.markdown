@@ -32,13 +32,16 @@ By no longer forcing the typography horizontally, the engine respected the nativ
 
 Haiku is not the first to hit this wall. In fact, the tech industry realized this issue over a decade ago, and every major modern operating system has migrated to Light Hinting (or similar approaches) by default:
 
-    Linux: The Linux world relies on FreeType (the exact same font engine Haiku uses under the hood). Historically, Linux used a strong hinting profile that made fonts look jagged or overly thin. Years ago, major distributions like Ubuntu and Fedora, along with desktop environments like GNOME and KDE, switched their default setting to "Slight" (Light). The reason was identical: aggressive hinting ruined modern font aesthetics and smudged bold text. Today, a fresh Ubuntu install comes with Light Hinting out of the box.
+## Linux: 
+The Linux world relies on FreeType (the exact same font engine Haiku uses under the hood). Historically, Linux used a strong hinting profile that made fonts look jagged or overly thin. Years ago, major distributions like Ubuntu and Fedora, along with desktop environments like GNOME and KDE, switched their default setting to "Slight" (Light). The reason was identical: aggressive hinting ruined modern font aesthetics and smudged bold text. Today, a fresh Ubuntu install comes with Light Hinting out of the box.
 
-    Android: From its earliest versions, Google’s mobile OS adopted vertical Light Hinting to ensure small text remained legible on mobile screens without bleeding into blurry artifacts.
+## Android: 
+From its earliest versions, Google’s mobile OS adopted vertical Light Hinting to ensure small text remained legible on mobile screens without bleeding into blurry artifacts.
 
-    Apple (macOS): Apple has always held a strict philosophy: respect the type designer's original vision at all costs. Since the early days of Mac OS X, they implemented an extreme version of Light Hinting (practically disabling horizontal hinting altogether). They preferred a slightly softer look on older monitors over distorted letterforms. With the advent of Retina (HiDPI) displays, this became the absolute standard.
+## Apple (macOS):
+Apple has always held a strict philosophy: respect the type designer's original vision at all costs. Since the early days of Mac OS X, they implemented an extreme version of Light Hinting (practically disabling horizontal hinting altogether). They preferred a slightly softer look on older monitors over distorted letterforms. With the advent of Retina (HiDPI) displays, this became the absolute standard.
 
-###The Final Result
+### The Final Result
 
 Here is the difference. It might look subtle at first glance, but in daily desktop usage, the change is massive and the visual comfort is noticed instantly:
 
